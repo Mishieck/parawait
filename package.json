@@ -1,0 +1,26 @@
+{
+  "name": "await-all",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mishieck/await-all.git"
+  },
+  "keywords": [],
+  "author": "Mishieck Mwale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mishieck/await-all/issues"
+  },
+  "homepage": "https://github.com/Mishieck/await-all#readme",
+  "devDependencies": {
+    "ts-loader": "^8.0.18",
+    "typescript": "^4.2.3",
+    "webpack": "^5.26.3",
+    "webpack-cli": "^4.5.0"
+  }
+}
