@@ -1,20 +1,20 @@
 import { Action } from "../../src/types.js";
 
-let input: boolean,
-  inputs: Array<boolean> = [],
-  action: Action,
-  actions: Array<Action> = [];
+let input,
+  inputs,
+  action,
+  actions;
 
-const generateInputs = (): Array<boolean> => {
-  let inputs: Array<boolean> = [];
+const generateInputs = () => {
+  let inputs = [];
   for (let i = 0; i < 10; i++) inputs.push(i % 2 ? true : false);
   return inputs;
 };
 
-const generateAction = (numberOfLoops: number): Action => {
+const generateAction = (numberOfLoops) => {
 	const output = numberOfLoops % 2000 ? true : undefined;
 	
-	return async (input: boolean): Promise<any> => {
+	return async (input)=> {
 		while (numberOfLoops--) continue;
 		return output;
 	};

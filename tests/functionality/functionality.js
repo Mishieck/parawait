@@ -1,9 +1,8 @@
 import { input, inputs, action, actions } from "./utils.js";
 import { nino, niso, nimo, sino, siso, simo, mino, miso, mimo } from "../../src/main.js";
-import { SAInput, MAInput, Actions } from "../../src/types.js";
 
 
-const run = async (module: Actions, sai: SAInput, mai: MAInput) => {
+const run = async (module, sai, mai) => {
 	let start = performance.now();
 	const sao = await module.sa(sai);
 	const sat = performance.now() - start;
