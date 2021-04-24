@@ -1,11 +1,24 @@
 import performActions from "./perform-actions.js";
-import { IOType, Input, SAInput, MAInput, Action, Actions, ActionPerformerInput } from "./types.js";
+
+import {
+  IOType,
+  Input,
+  Output,
+  SA,
+  MA,
+  SAMA,
+} from "./types.js";
+
+type ActionPerformerInput = Input & {
+  getAction(actionCount: number): Function;
+  actionCount: number;
+};
 
 
-const actions = (inputType: IOType, outputType: IOType): Actions => {
-	let output: any, filter: Boolean;
+const actions = (inputType: IOType, outputType: IOType): SAMA => {
+	let output: any | Array<any>, outputCount: number, filter: Boolean;
 	
-	const sa = ({ action, actionCount, input, inputs, filterOutput }: SAInput): Promise<any> => getActionPerformer({
+	const sa: SA = ({ action, actionCount, input, inputs, filterOutput }) => getActionPerformer({
     getAction: (): Function => action,
     actionCount,
     input,
@@ -13,16 +26,27 @@ const actions = (inputType: IOType, outputType: IOType): Actions => {
     filterOutput
   });
 
-	const ma = ({ actions, input, inputs, filterOutput }: MAInput): Promise<any> => getActionPerformer({
-    getAction: (actionCount: number) => actions[actionCount],
-    actionCount: actions.length,
-    input,
-    inputs,
-    filterOutput
-  });
+	const ma: MA = ({ actions, input, inputs, filterOutput }) => {
+    return getActionPerformer({
+      getAction: (index: number) => actions[index],
+      actionCount: actions.length,
+      input,
+      inputs,
+      filterOutput
+    });
+  };
 	
 	const getActionPerformer = async ({ getAction, actionCount, input, inputs, filterOutput }: ActionPerformerInput) => {
-		filter = filterOutput;
+    const getOutputCount = (): number => {
+      return (
+        actionCount ? actionCount
+        : inputs ? inputs.length
+        : 0
+      );
+    };
+    
+    if (outputType === "multiple") output = new Array(getOutputCount());
+    filter = filterOutput;
 	
 		return performActions({
 			getAction,
@@ -35,9 +59,9 @@ const actions = (inputType: IOType, outputType: IOType): Actions => {
 	
 	const getInput = ({ input, inputs }: Input) => {
 		return {
-			none: (): undefined => undefined,
-			single: (): any => input,
-			multiple: (actionCount: number): any => inputs[actionCount]
+			none: (): Input => undefined,
+			single: (): Input => input,
+			multiple: (index: number): Input => inputs[index]
 		};
 	};
 	
@@ -46,14 +70,14 @@ const actions = (inputType: IOType, outputType: IOType): Actions => {
 		single: (actionCount: number, actionOutput: any) => {
 			if (actionOutput !== undefined) output = actionOutput;
 		},
-		multiple: (actionCount: number, actionOutput: any) => {
-			output[actionCount] = actionOutput;
+		multiple: (index: number, actionOutput: Output) => {
+			output[index] = actionOutput;
 		}
 	};
 	
 	const getOutput = (): any => filter ? output.filter((value: any): boolean => value !== undefined) : output;
-	
-	return { sa, ma };
+	const sama: SAMA = { sa, ma };
+	return sama;
 };
 
 

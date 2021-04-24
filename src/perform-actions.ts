@@ -1,3 +1,6 @@
+import { SAMAOutput } from "./types.js";
+
+
 type Input = {
   getAction: Function;
   actionCount: number;
@@ -7,7 +10,7 @@ type Input = {
 };
 
 
-const performActions = ({ getAction, actionCount, getInput, setOutput, getOutput }: Input): Promise<any> => {
+const performActions = ({ getAction, actionCount, getInput, setOutput, getOutput }: Input): SAMAOutput => {
 	return new Promise((resolve: Function, reject: Function) => {
 		let resolveCount: number = actionCount;
 		
@@ -19,5 +22,6 @@ const performActions = ({ getAction, actionCount, getInput, setOutput, getOutput
 		};
 	});
 };
+
 
 export default performActions;

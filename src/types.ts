@@ -1,34 +1,47 @@
 type IOType = "none" | "single" | "multiple";
+type Input = any;
+type Inputs = Array<Input>;
+type Output = Promise<any>;
+type Outputs = Array<Output>;
+type Action = (input: Input, actionIndex: number) => Output;
+type Actions = Array<Action>;
 
-type Input = {
+type SAMAInput = {
   input?: any;
   inputs?: Array<any>;
   filterOutput?: boolean;
 };
 
-type Action = (input: any, actionCount: number) => Promise<any>;
-
-type SAInput = Input & {
+type SAInput = SAMAInput & {
   action: Action;
   actionCount: number;
 };
 
-type MAInput = Input & {
-  actions: Array<Function>;
+type MAInput = SAMAInput & {
+  actions: Actions;
 };
 
-type ActionPerformerInput = Input & {
-  getAction(actionCount: number): Function;
-  actionCount: number;
+type SAMAOutput = Output | Outputs;
+type SA = (options: SAInput) => SAMAOutput;
+type MA = (options: MAInput) => SAMAOutput;
+
+type SAMA = {
+  sa: SA,
+  ma: MA
 };
 
-type SA = (options: SAInput) => Promise<any>;
-type MA = (options: MAInput) => Promise<any>;
-
-type Actions = {
-  sa: SA;
-  ma: MA;
+export {
+  IOType,
+  Input,
+  Inputs,
+  Output,
+  Outputs,
+  Action,
+  Actions,
+  SAInput,
+  SA,
+  MAInput,
+  MA,
+  SAMAOutput,
+  SAMA,
 };
-
-
-export { IOType, Input, SAInput, MAInput, ActionPerformerInput, Action, Actions };
