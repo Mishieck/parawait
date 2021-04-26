@@ -2,7 +2,7 @@ type IOType = "none" | "single" | "multiple";
 type Input = any;
 type Inputs = Array<Input>;
 type Output = Promise<any>;
-type Outputs = Array<Output>;
+type Outputs = Promise<Array<Output>>;
 type Action = (input: Input, actionIndex: number) => Output;
 type Actions = Array<Action>;
 
