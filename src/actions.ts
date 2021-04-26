@@ -67,10 +67,10 @@ const actions = (inputType: IOType, outputType: IOType): SAMA => {
 	
 	const setOutput = {
 		none: (): undefined => undefined,
-		single: (actionCount: number, actionOutput: any) => {
+		single: (actionOutput: any) => {
 			if (actionOutput !== undefined) output = actionOutput;
 		},
-		multiple: (index: number, actionOutput: Output) => {
+		multiple: (actionOutput: Output, index: number,) => {
 			output[index] = actionOutput;
 		}
 	};
