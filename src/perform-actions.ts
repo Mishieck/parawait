@@ -17,7 +17,8 @@ const performActions: PerformActions = ({ getAction, actionCount, getInput, setO
 		let resolveCount: number = actionCount;
 		
 		while (actionCount--) {
-			promisify(getAction(actionCount), getInput(actionCount), actionCount).then((output: any) => {
+			promisify(getAction(actionCount), getInput(actionCount), actionCount)
+			.then((output: any) => {
 				setOutput(output, actionCount,);
 				--resolveCount || resolve(getOutput());
 			});

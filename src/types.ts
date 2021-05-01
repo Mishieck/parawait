@@ -1,8 +1,8 @@
 type IOType = "none" | "single" | "multiple";
 type Input = any;
 type Inputs = Array<Input>;
-type Output = Promise<any>;
-type Outputs = Promise<Array<Output>>;
+type Output = any;
+type Outputs = Array<Output>;
 type Action = (input: Input, actionIndex: number) => Output;
 type Actions = Array<Action>;
 
@@ -21,7 +21,7 @@ type MAInput = SAMAInput & {
   actions: Actions;
 };
 
-type SAMAOutput = Output | Outputs;
+type SAMAOutput = Promise<Output | Outputs>;
 type SA = (options: SAInput) => SAMAOutput;
 type MA = (options: MAInput) => SAMAOutput;
 
@@ -31,17 +31,17 @@ type SAMA = {
 };
 
 export {
+  Action,
+  Actions,
   IOType,
   Input,
   Inputs,
+  MA,
+  MAInput,
   Output,
   Outputs,
-  Action,
-  Actions,
-  SAInput,
   SA,
-  MAInput,
-  MA,
-  SAMAOutput,
+  SAInput,
   SAMA,
+  SAMAOutput,
 };
