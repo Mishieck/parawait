@@ -1,7 +1,11 @@
 const path = require( 'path' );
 
+const mode = process.env.NODE_ENV;
+
+const configFileName = mode === "development" ? "./tsconfig.dev.json" : "./tsconfig.prod.json";
+
 module.exports = {
-    mode: 'production',
+    mode,
     entry: './src/main.ts',
     output: {
         path: path.resolve( __dirname, 'dist' ),
@@ -21,5 +25,6 @@ module.exports = {
                 exclude: /node_modules/,
             }
         ]
-    }
+    },
+    ts: { configFileName }
 };
