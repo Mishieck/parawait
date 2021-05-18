@@ -16,10 +16,10 @@ const performActions: PerformActions = ({ getAction, actionCount, getInput, setO
 	return new Promise((resolve: Function, reject: Function) => {
 		let resolveCount: number = actionCount;
 		
-		while (actionCount--) {
-			promisify(getAction(actionCount), getInput(actionCount), actionCount)
+		for (let actionIndex = actionCount; actionIndex--; ) {
+			promisify(getAction(actionIndex), getInput(actionIndex), actionIndex)
 			.then((output: any) => {
-				setOutput(output, actionCount,);
+				setOutput(output, actionIndex,);
 				--resolveCount || resolve(getOutput());
 			});
 		};
