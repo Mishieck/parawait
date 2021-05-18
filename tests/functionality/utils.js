@@ -1,5 +1,3 @@
-import { Action } from "../../src/types.js";
-
 let input,
   inputs,
   action,
@@ -12,10 +10,11 @@ const generateInputs = () => {
 };
 
 const generateAction = (numberOfLoops) => {
-	const output = numberOfLoops % 2000 ? true : undefined;
-	
 	return async (input)=> {
-		while (numberOfLoops--) continue;
+    const output = numberOfLoops % 2000 ? true : undefined;
+    console.info(numberOfLoops)
+    let index = numberOfLoops;
+		while (index--) continue;
 		return output;
 	};
 };
@@ -24,8 +23,7 @@ input = true;
 inputs = generateInputs();
 action = generateAction(5000);
 actions = [];
-
-for (let i = 1; 1 <= 10; i++) actions.push(generateAction(i * 1000));
+for (let i = 1; i <= 10; i++) actions.push(generateAction(i * 1000));
 
 
 export { input, inputs, action, actions };
