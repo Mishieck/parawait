@@ -16,7 +16,7 @@ type ActionPerformerInput = Input & {
 
 
 const actions = (inputType: IOType, outputType: IOType): SAMA => {
-	let output: any | Array<any>, outputCount: number, filter: Boolean;
+	let output: any | Array<any>, filter: Boolean;
 	
 	const sa: SA = ({ action, actionCount, input, inputs, filterOutput }) => getActionPerformer({
     getAction: (): Function => action,

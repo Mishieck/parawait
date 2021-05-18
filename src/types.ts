@@ -3,18 +3,21 @@ type Input = any;
 type Inputs = Array<Input>;
 type Output = any;
 type Outputs = Array<Output>;
-type Action = (input: Input, actionIndex: number) => Output;
+type ActionIndex = number;
+type Action = (input: Input, actionIndex: ActionIndex) => Output;
 type Actions = Array<Action>;
+type FilterOutput = Boolean;
+type ActionCount = number;
 
 type SAMAInput = {
   input?: any;
   inputs?: Array<any>;
-  filterOutput?: boolean;
+  filterOutput?: FilterOutput;
 };
 
 type SAInput = SAMAInput & {
   action: Action;
-  actionCount: number;
+  actionCount: ActionCount;
 };
 
 type MAInput = SAMAInput & {
