@@ -1,4 +1,4 @@
-import { Action, Input, SAMAOutput } from "./types.js";
+import { Action, Input, Onerror, Output, SAMAOutput } from "./types.js";
 
 
 type PerformAcionInput = {
@@ -7,12 +7,22 @@ type PerformAcionInput = {
   getInput: Function;
   setOutput: Function;
   getOutput: Function;
+	onerror: Onerror;
 };
 
 type PerformActions = (options: PerformAcionInput) => SAMAOutput;
 type Promisify = (action: Action, input: Input, actionIndex: number) => SAMAOutput;
 
-const performActions: PerformActions = ({ getAction, actionCount, getInput, setOutput, getOutput }) => {
+const performActions: PerformActions = (options) => {
+  const {
+    getAction,
+    actionCount,
+    getInput,
+    setOutput,
+    getOutput,
+    onerror = "throw"
+  } = options;
+
 	return new Promise((resolve: Function, reject: Function) => {
 		let resolveCount: number = actionCount;
 		
@@ -21,7 +31,13 @@ const performActions: PerformActions = ({ getAction, actionCount, getInput, setO
 			.then((output: any) => {
 				setOutput(output, actionIndex,);
 				--resolveCount || resolve(getOutput());
-			});
+			})
+      .catch((reason) => {
+        if (onerror === "throw") reject(new Error(`Action at ${actionIndex} was not performed successfully.`));
+        else if (onerror === "return") resolve();
+        else if (onerror === "break") resolve(getOutput());
+        else return;
+      });
 		};
 	});
 };

@@ -8,11 +8,13 @@ type Action = (input: Input, actionIndex: ActionIndex) => Output;
 type Actions = Array<Action>;
 type FilterOutput = Boolean;
 type ActionCount = number;
+type Onerror = "throw" | "return" | "continue" | "break";
 
 type SAMAInput = {
   input?: any;
   inputs?: Array<any>;
   filterOutput?: FilterOutput;
+  onerror?: Onerror;
 };
 
 type SAInput = SAMAInput & {
@@ -41,6 +43,7 @@ export {
   Inputs,
   MA,
   MAInput,
+  Onerror,
   Output,
   Outputs,
   SA,

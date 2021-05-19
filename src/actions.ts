@@ -7,6 +7,7 @@ import {
   SA,
   MA,
   SAMA,
+  SAMAOutput
 } from "./types.js";
 
 type ActionPerformerInput = Input & {
@@ -14,29 +15,42 @@ type ActionPerformerInput = Input & {
   actionCount: number;
 };
 
+type GetActionPerformer = (options: ActionPerformerInput) => SAMAOutput;
+
 
 const actions = (inputType: IOType, outputType: IOType): SAMA => {
 	let output: any | Array<any>, filter: Boolean;
 	
-	const sa: SA = ({ action, actionCount, input, inputs, filterOutput }) => getActionPerformer({
+	const sa: SA = ({ action, actionCount, input, inputs, filterOutput, onerror }) => getActionPerformer({
     getAction: (): Function => action,
     actionCount,
     input,
     inputs,
-    filterOutput
+    filterOutput,
+    onerror
   });
 
-	const ma: MA = ({ actions, input, inputs, filterOutput }) => {
+	const ma: MA = ({ actions, input, inputs, filterOutput, onerror }) => {
     return getActionPerformer({
       getAction: (index: number) => actions[index],
       actionCount: actions.length,
       input,
       inputs,
-      filterOutput
+      filterOutput,
+      onerror
     });
   };
 	
-	const getActionPerformer = async ({ getAction, actionCount, input, inputs, filterOutput }: ActionPerformerInput) => {
+	const getActionPerformer: GetActionPerformer = async (options) => {
+    const {
+      getAction,
+      actionCount,
+      input,
+      inputs,
+      filterOutput,
+      onerror
+    } = options;
+
     const getOutputCount = (): number => {
       return (
         actionCount ? actionCount
@@ -53,7 +67,8 @@ const actions = (inputType: IOType, outputType: IOType): SAMA => {
 			actionCount,
 			getInput: getInput({ input, inputs })[inputType],
 			setOutput: setOutput[outputType],
-			getOutput
+			getOutput,
+      onerror
 		});
 	};
 	
@@ -74,8 +89,9 @@ const actions = (inputType: IOType, outputType: IOType): SAMA => {
 			output[index] = actionOutput;
 		}
 	};
-	
-	const getOutput = (): any => filter ? output.filter((value: any): boolean => value !== undefined) : output;
+
+  const outputFilter = (output: Output): boolean => output !== undefined;
+	const getOutput = (): any => filter ? output.filter(outputFilter) : output;
 	const sama: SAMA = { sa, ma };
 	return sama;
 };
