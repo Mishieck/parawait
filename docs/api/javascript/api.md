@@ -4,93 +4,91 @@ __Table of Contents__
 
 - [API](#api)
   - [Introduction](#introduction)
-  - [mino](#mino)
-    - [ma](#ma)
-    - [sa](#sa)
-  - [miso](#miso)
-    - [ma](#ma-1)
-    - [sa](#sa-1)
-  - [mimo](#mimo)
-    - [ma](#ma-2)
-    - [sa](#sa-2)
-  - [nino](#nino)
-    - [ma](#ma-3)
-    - [sa](#sa-3)
-  - [niso](#niso)
-    - [ma](#ma-4)
-    - [sa](#sa-4)
-  - [nimo](#nimo)
-    - [ma](#ma-5)
-    - [sa](#sa-5)
-  - [sino](#sino)
-    - [ma](#ma-6)
-    - [sa](#sa-6)
-  - [siso](#siso)
-    - [ma](#ma-7)
-    - [sa](#sa-7)
-  - [simo](#simo)
-    - [ma](#ma-8)
-    - [sa](#sa-8)
+  - [`promises`](#promises)
+    - [Syntax](#syntax)
+    - [Parameters](#parameters)
+    - [Return Value](#return-value)
+    - [Promises Options](#promises-options)
+      - [Structure](#structure)
+      - [Properties](#properties)
 
 ## Introduction
 
-## mino
+This is the API documentation recommended for JavaScript developers who are not familiar with TypeScript.
 
-### ma
+## `promises`
 
-### sa
+### Syntax
 
+```js
+promises(options)
+```
 
-## miso
+### Parameters
 
-### ma
+- `options`:
+  - Type: `Object`
+  - Required: Yes
+  - Usage: Used to do the following:
+    - Provide functions you want to run.
+    - Provide inputs to the functions
+    - Specify how the output should be returned.
+    - Specify what should happen is an error is encountered.
+  - Reference: [Promises Options](#promises-options).
 
-### sa
+### Return Value
 
+A promise that resolves to a value as specified in `options`.
 
-## mimo
+### Promises Options
 
-### ma
+The input to [`promises`](#promises).
 
-### sa
+#### Structure
 
+```js
+{
+  action: Function,
+  actionCount: number,
+  actions: Array,
+  filterOutput: boolean,
+  input: any,
+  inputs: Array,
+  onerror: string,
+  outputType: string
+}
+```
 
-## nino
+#### Properties
 
-### ma
+`action`
 
-### sa
+The function you want to run multiple times at once.
 
+`actions`
 
-## niso
+An array of functions you want to run at once.
 
-### ma
+`filterOutput`
 
-### sa
+Specifies whether or not the outputs should be filters. It is used when multiple outputs are expected. The default value is `false`;
 
-## nimo
+`input`
 
-### ma
+An input of that will be used in the provided function(s).
 
-### sa
+`inputs`
 
+An array of inputs that will be used in the provided function(s).
 
-## sino
+`onerror`
 
-### ma
+Specifies what should happen if an error has been encountered. Refer to [Onerror](../onerror.md) for more information.
 
-### sa
+`outputType`
 
+Specifies what type of output should be returned. It can be any of the following values:
 
-## siso
-
-### ma
-
-### sa
-
-
-## simo
-
-### ma
-
-### sa
+- `none`: This means that no output is expected.
+- `single`: This means that only a single output should be returned.
+- `multiple`: This means that multiple outputs should be returned.

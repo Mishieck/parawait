@@ -20,6 +20,10 @@ The functions you want to run at once do not have to be synchronous. AwaitAll pr
 
 AwaitAll provides various methods to suit different needs. You can use different methods based on how many inputs you provide, how many outputs you expect and how many unique functions you want to invoke.
 
+### Error Handling
+
+AwaitAll gives you the choice to choose how errors should be handled. You can choose whether or not the promise should be rejected. You can also choose whether or not the promised should resolve with an output.
+
 ## Quick Start
 
 Refer to our [Quick Start Guide](./docs/quick-start.md) for a quick introduction to how AwaitAll works.
