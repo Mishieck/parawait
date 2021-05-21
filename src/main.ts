@@ -1,3 +1,3 @@
-import { nino, niso, nimo, sino, siso, simo, mino, miso, mimo } from "./io.js";
+import promises from "./promises.js";
 
-export { nino, niso, nimo, sino, siso, simo, mino, miso, mimo };
+export { promises };

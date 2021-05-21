@@ -1,53 +1,55 @@
-type IOType = "none" | "single" | "multiple";
-type Input = any;
-type Inputs = Array<Input>;
-type Output = any;
-type Outputs = Array<Output>;
-type ActionIndex = number;
 type Action = (input: Input, actionIndex: ActionIndex) => Output;
-type Actions = Array<Action>;
-type FilterOutput = Boolean;
 type ActionCount = number;
+type ActionGetter = (index: number) => Action;
+type ActionIndex = number;
+type Actions = Array<Action>;
+type ActionType = "single" | "multiple";
+
+type Input = any;
+type InputGetter = (index: number) => Input;
+type Inputs = Array<Input>;
+type InputType = ActionType | "none";
+
+type FilterOutput = Boolean;
+type Output = any;
+type OutputGetter = (index: number) => Output | Outputs;
+type Outputs = Array<Output>;
+type OutputSetter = (output: Output | Outputs, index: ActionIndex) => void;
+type OutputType = InputType;
+
 type Onerror = "throw" | "return" | "continue" | "break";
 
-type SAMAInput = {
-  input?: any;
-  inputs?: Array<any>;
-  filterOutput?: FilterOutput;
-  onerror?: Onerror;
-};
+type PromisesOptions = {
+  input?: Input,
+  inputs?: Inputs,
+  action?: Action,
+  actions?: Actions,
+  actionCount?: ActionCount,
+  outputType?: OutputType,
+  filterOutput?: FilterOutput,
+  onerror?: Onerror
+}
 
-type SAInput = SAMAInput & {
-  action: Action;
-  actionCount: ActionCount;
-};
+type PromisesOutput = Promise<Output | Outputs>;
+type Promises = (options: PromisesOptions) => PromisesOutput;
 
-type MAInput = SAMAInput & {
-  actions: Actions;
-};
-
-type SAMAOutput = Promise<Output | Outputs>;
-type SA = (options: SAInput) => SAMAOutput;
-type MA = (options: MAInput) => SAMAOutput;
-
-type SAMA = {
-  sa: SA,
-  ma: MA
-};
 
 export {
   Action,
+  ActionGetter,
   Actions,
-  IOType,
+  ActionType,
   Input,
+  InputGetter,
   Inputs,
-  MA,
-  MAInput,
+  InputType,
   Onerror,
   Output,
+  OutputGetter,
   Outputs,
-  SA,
-  SAInput,
-  SAMA,
-  SAMAOutput,
-};
+  OutputSetter,
+  OutputType,
+  Promises,
+  PromisesOptions,
+  PromisesOutput
+}
