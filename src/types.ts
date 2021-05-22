@@ -28,7 +28,7 @@ type PromisesOptions = {
   outputType?: OutputType,
   filterOutput?: FilterOutput,
   onerror?: Onerror
-}
+};
 
 type PromisesOutput = Promise<Output | Outputs>;
 type Promises = (options: PromisesOptions) => PromisesOutput;
@@ -52,4 +52,4 @@ export {
   Promises,
   PromisesOptions,
   PromisesOutput
-}
+};

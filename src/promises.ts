@@ -24,19 +24,19 @@ import {
 type ActionGetters = {
   single: ActionGetter,
   multiple: ActionGetter
-}
+};
 
 type InputGetters = {
   none: InputGetter,
   single: InputGetter,
   multiple: InputGetter
-}
+};
 
 type OutputSetters = {
   none: OutputSetter,
   single: OutputSetter,
   multiple: OutputSetter
-}
+};
 
 type OutputInitializer = (outputType: OutputType, outputCount: number) => Output | Outputs;
 
@@ -82,7 +82,7 @@ const promises: Promises = async (options) => {
 		multiple: (actionOutput, index) => {
 			output[index] = actionOutput;
 		}
-	}
+	};
 
   const setOutput = outputSetters[outputType];
 
@@ -94,26 +94,26 @@ const promises: Promises = async (options) => {
     getOutput,
     onerror
   });
-}
+};
 
 const initializeOutput: OutputInitializer = (outputType, outputCount) => {
   return (outputType === "multiple") ? new Array(outputCount) : undefined;
-}
+};
 
 const createActionGetters = (action: Action, actions: Actions): ActionGetters => {
   return {
     single: () => action,
     multiple: (index) => actions[index]
-  }
-}
+  };
+};
 
 const createInputGetters = (input: Input, inputs: Inputs): InputGetters => {
   return {
     none: () => undefined,
     single: () => input,
     multiple: (index: number) => inputs[index]
-  }
-}
+  };
+};
 
 
 export default promises;
