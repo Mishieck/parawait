@@ -2,7 +2,8 @@
   "name": "await-all",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/main.js",
+  "files": ["dist", "src", "js"],
   "scripts": {
     "js": "tsc --project ./tsconfig.js.json",
     "build": "NODE_ENV=production webpack --config webpack.config.js",
