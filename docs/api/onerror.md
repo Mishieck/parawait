@@ -1,4 +1,4 @@
-# Onerror
+# On Error
 
 ## Introduction
 

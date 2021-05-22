@@ -1,8 +1,8 @@
-# Quick Start
+# Quick Start Guide
 
 __Table of Contents__
 
-- [Quick Start](#quick-start)
+- [Quick Start Guide](#quick-start-guide)
   - [Introduction](#introduction)
   - [Run](#run)
   - [Reduce](#reduce)

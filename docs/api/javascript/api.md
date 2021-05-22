@@ -65,6 +65,10 @@ The input to [`promises`](#promises).
 
 The function you want to run multiple times at once.
 
+`actionCount`
+
+Specifies how many times a function is supposed to be called. It is used only when a single `action` has been provided. If multiple `inputs` have been provided, there is no need to add `actionCount` to `options` because the number of inputs always equal the number of times the provided action is invoked.
+
 `actions`
 
 An array of functions you want to run at once.
@@ -83,7 +87,7 @@ An array of inputs that will be used in the provided function(s).
 
 `onerror`
 
-Specifies what should happen if an error has been encountered. Refer to [Onerror](../onerror.md) for more information.
+Specifies what should happen if an error has been encountered. Refer to [On Error](../onerror.md) for more information.
 
 `outputType`
 

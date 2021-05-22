@@ -2,6 +2,8 @@
 
 ## Introduction
 
+This is a documentation of all types exposed via the [API](./api.md). The following sections describe these types in detail. Refer to this part of the documentation every time you encounter a type in the documentation that you do not recognize as a TypeScript native type.
+
 ## Action
 
 ### Description
@@ -18,7 +20,7 @@ User defined function.
 
 ### Description
 
-The number of [`Actions`](#actions) provided or the number of times a particular action must be performed if only one action has been provided.
+A property of [PromisesOptions](#promisesoptions) that specifies the number of times an [Action](#action) must be performed if only one action has been provided. If multiple [Inputs](#inputs) have been provided, it is not required. This is because the number of inputs should always be equal to the number of times an action is performed.
 
 ### Structure
 
@@ -98,21 +100,7 @@ Specifies what should be done in case any of the functions provided throws an er
 "throw" | "return" | "continue" | "break"
 ```
 
-#### `break`
-
-This means that the promise will be resolved immediately with the available output. If multiple outputs are expected, the output array will be returned with the expected length. The outputs for the processes run successfully before then will be set on the appropriate indeces and the rest of the positions will be left empty.
-
-#### `continue`
-
-This means that the promise will not be resolved untill all processes have been run. If an output is expected, the promise will be resolved with the output. However, the output for the failed process will be set to `undefined`.
-
-#### `return`
-
-This means that the promise will be resolved immediately with no output.
-
-#### `throw`
-
-This means that the promise will be rejected immediately with an error.
+Refer to [On Error](../onerror.md) for more information.
 
 ## Output
 
@@ -154,7 +142,7 @@ Used to specify the type of output expected.
 
 ### Description
 
-Used to run multiple processes at once.
+Used to run multiple processes at once. It can be used to either run a single process multiple times or run multiple unique processes at once.
 
 ### Structure
 
@@ -172,13 +160,24 @@ Input for [`promises`](#promises).
 
 ```ts
 type PromisesOptions = {
+  action?: Action,
+  actionCount?: ActionCount,
+  actions?: Actions,
+  filterOutput?: FilterOutput,
   input?: Input,
   inputs?: Inputs,
-  action?: Action,
-  actions?: Actions,
-  actionCount?: ActionCount,
-  outputType?: OutputType,
-  filterOutput?: FilterOutput,
-  onerror?: Onerror
+  onerror?: Onerror,
+  outputType?: OutputType
 }
 ```
+
+### Properties
+
+- `action`: A single function to be invoked multiple times.
+- `actionCount`: Used when only when a single function has been provided. If multiple inputs have been used, there is no need to include this property because the number of inputs always equals the number of times the provided function is supposed to be invoked.
+- `actions`: Multiple functions to be invoked at once.
+- `filterOutput`: Specifies whether or not to filter outputs. This is used when multiple outputs are expected.
+- `input`: A single input that is used as an argument every time a function is called.
+- `inputs`: Multiple inputs that are used as arguments to the provided function(s).
+- `onerror`: Used to indicate what should happen is an error occurs.
+- `outputType`: Specifies what type of output should be returned.
