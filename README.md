@@ -36,4 +36,4 @@ Refer to our [Documentation](./docs/home.md) for an in-depth look at AwaitAll.
 
 This library is under the [MIT Licence](https://).
 
-(c) 2021, __Mishieck Mwale__.
+Copyright (c) 2021, __Mishieck Mwale__.
