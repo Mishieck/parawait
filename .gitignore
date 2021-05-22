@@ -63,6 +63,9 @@ typings/
 # vscode
 .vscode/
 
+# js files
+js/
+
 # dev files
 dev/
 

@@ -1,5 +1,5 @@
 import { input, inputs, action, actions } from "./utils.js";
-import { promises } from "/dev/main.js";
+import { promises } from "/js/main.js";
 
 
 const test = async (input) => {

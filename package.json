@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc --project ./tsconfig.dev.json",
+    "js": "tsc --project ./tsconfig.js.json",
     "build": "NODE_ENV=production webpack --config webpack.config.js",
     "test": "node --experimental-modules ./tests/functionality/functionality.js"
   },
