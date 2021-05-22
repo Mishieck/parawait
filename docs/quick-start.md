@@ -2,15 +2,14 @@
 
 __Table of Contents__
 
-- [Quick Start Guide](#quick-start-guide)
-  - [Introduction](#introduction)
-  - [Run](#run)
-  - [Reduce](#reduce)
-  - [Reuse](#reuse)
-  - [Filter](#filter)
-  - [Find](#find)
-  - [Map](#map)
-  - [Search](#search)
+- [Introduction](#introduction)
+- [Run](#run)
+- [Reduce](#reduce)
+- [Reuse](#reuse)
+- [Filter](#filter)
+- [Find](#find)
+- [Map](#map)
+- [Search](#search)
 
 ## Introduction
 

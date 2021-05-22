@@ -1,13 +1,5 @@
 # API
 
-__Table of Contents__
-
-- [API](#api)
-  - [Introduction](#introduction)
-  - [`promises`](#promises)
-    - [Description](#description)
-    - [Type](#type)
-
 ## Introduction
 
 This is the API documentation recommended for TypeScript developers. Refer to [Types](./types.md) for a detailed description of what each one of the types used in the following sections means.

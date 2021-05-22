@@ -11,5 +11,5 @@ For a quick introduction to AwaitAll, refer to the [Quick Start Guide](./quick-s
 ## Topics
 
 - API
-  - [JavaScript](./api/javascript/api.md): FOr JavaScript developers
+  - [JavaScript](./api/javascript/api.md): For JavaScript developers
   - [TypeScript](./api/typescript/api.md): For TypeScript developers
