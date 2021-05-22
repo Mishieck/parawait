@@ -2,11 +2,11 @@
 
 ## Introduction
 
-AwaitAll is a JavaScript library for concurrency and parallelism using promises. You can achieve concurrency and parallelism without using workers. On single-core processors, the processes are run concurrently. On multi-core processors, the processes are run in parallel.
+AwaitAll is a JavaScript library for achieving concurrency and parallelism using promises. With AwaitAll, You can achieve concurrency and parallelism without using workers. On single-core processors, the processes are run concurrently. On multi-core processors, the processes are run in parallel.
 
 ## Features
 
-JavaScript provides native ways of running multiple processes at once. These include `Promise.all`, `Promise.race` and `Promise.allSettled`. The similarity between AwaitAll and the aforementioned methods is that they all use promises. However, there are a few significant differences between these methods and AwaitAll in terms of how they run the processes. Let us look at the features provided by AwaitAll.
+JavaScript provides native ways of running multiple processes at once. These include `Promise.all`, `Promise.race` and `Promise.allSettled`. The similarity between AwaitAll and the aforementioned methods is that they all use promises. However, there are a few significant differences between these methods and AwaitAll in terms of how they run the processes. Let us look at the features of AwaitAll.
 
 ### Memory Efficiency
 
