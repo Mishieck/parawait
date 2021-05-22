@@ -52,7 +52,14 @@ const promises: Promises = async (options) => {
     onerror
   } = options;
 
-  if (!actionCount) actionCount = actions.length;
+  if (!actionCount) {
+    actionCount = actions ? actions.length
+    : inputs ? inputs.length
+    : undefined;
+  };
+
+  if (!actionCount) throw new Error(`Parameter missing required property "actionCount".`);
+
 	let output: Output | Outputs = initializeOutput(outputType, actionCount || inputs && inputs.length);
   const actionType: ActionType = action ? "single" : "multiple";
 
