@@ -1,4 +1,4 @@
-import { Action, Input, Onerror, Output, PromisesOutput } from "./types.js";
+import {Action, Input, Onerror, Output, PromisesOutput} from "./types.js";
 
 type PerformActionInput = {
   getAction: Function;
@@ -10,21 +10,10 @@ type PerformActionInput = {
 };
 
 type PerformActions = (options: PerformActionInput) => PromisesOutput;
-type Promisify = (
-  action: Action,
-  input: Input,
-  actionIndex: number
-) => PromisesOutput;
+type Promisify = (action: Action, input: Input, actionIndex: number) => PromisesOutput;
 
 const performActions: PerformActions = (options) => {
-  const {
-    getAction,
-    actionCount,
-    getInput,
-    setOutput,
-    getOutput,
-    onerror = "throw",
-  } = options;
+  const {getAction, actionCount, getInput, setOutput, getOutput, onerror = "throw"} = options;
 
   return new Promise((resolve: Function, reject: Function) => {
     let resolveCount: number = actionCount;
@@ -36,12 +25,7 @@ const performActions: PerformActions = (options) => {
           --resolveCount || resolve(getOutput());
         })
         .catch((reason: any) => {
-          if (onerror === "throw")
-            reject(
-              new Error(
-                `Action at ${actionIndex} was not performed successfully.`
-              )
-            );
+          if (onerror === "throw") reject(reason);
           else if (onerror === "return") resolve();
           else if (onerror === "break") resolve(getOutput());
           else return;
@@ -50,7 +34,6 @@ const performActions: PerformActions = (options) => {
   });
 };
 
-const promisify: Promisify = async (action, input, actionIndex) =>
-  action(input, actionIndex);
+const promisify: Promisify = async (action, input, actionIndex) => action(input, actionIndex);
 
 export default performActions;
