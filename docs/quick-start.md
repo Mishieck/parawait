@@ -1,19 +1,45 @@
 # Quick Start Guide
 
-__Table of Contents__
+**Table of Contents**
 
-- [Introduction](#introduction)
-- [Run](#run)
-- [Reduce](#reduce)
-- [Reuse](#reuse)
-- [Filter](#filter)
-- [Find](#find)
-- [Map](#map)
-- [Search](#search)
+- [Quick Start Guide](#quick-start-guide)
+  - [Introduction](#introduction)
+  - [Installation](#installation)
+    - [CDN](#cdn)
+    - [NPM](#npm)
+  - [Run](#run)
+  - [Reduce](#reduce)
+  - [Reuse](#reuse)
+  - [Filter](#filter)
+  - [Find](#find)
+  - [Map](#map)
+  - [Search](#search)
 
 ## Introduction
 
+In this guide we are going to look at some examples of how to use AwaitAll. We are going to use A CDN to for this guide.
+
+## Installation
+
+### CDN
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/await-all"></script>
+```
+
+or
+
+```html
+<script src="https://unpkg.com/await-all"></script>
+```
+
+### NPM
+
+`$ npm i --save await-all`
+
 ## Run
+
+Let us run a few processes at once. We will use the function `promises`, the only export of AwaitAll. The function takes, only one parameter, an object containing options which specify functions, inputs, the expected output and more.
 
 ```js
 (async () => {
@@ -21,31 +47,59 @@ __Table of Contents__
   const process2 = () => console.info("Running process 2.");
   const process3 = () => console.info("Running process 3.");
 
-  await AwaitAll.promises({ actions: [process1, process2, process3], outputType: "none" });
+  await AwaitAll.promises({
+    actions: [process1, process2, process3],
+    outputType: "none"
+  });
 })();
 ```
 
 ## Reduce
 
+Let us look at how you can reduce an array of inputs into a single value. We are going to add multiple numbers at once.
+
 ```js
 (async () => {
   const numbers = [1, 2, 3];
   let sum = 0;
-  const add = (number) => sum += number;
+  const add = (number) => (sum += number);
 
-  await AwaitAll.promises({ action: add, inputs: numbers, outputType: "none" });
+  await AwaitAll.promises({
+    action: add,
+    inputs: numbers,
+    outputType: "none"
+  });
+
   console.log(sum);
 })();
 ```
 
 ## Reuse
 
+Let us see how we can use a single input to run multiple unique processes. We are going to format a string in Pascal case, Kebab case and Camel case.
+
 ```js
 (async () => {
   const text = "await all";
-  const toPascalCase = (text) => // Convert to Pascal case;
-  const toKebabCase = (text) => // Convert to Kebab case;
-  const toCamelCase = (text) => // Convert to Camel case;
+
+  const toPascalCase = (text) => {
+    const firstCharToUpperCase = (word) => word.replace(/^\w/, (char) => char.toUpperCase());
+    const words = text.trim().toLowerCase().split(/\s+/g);
+    return words.map(firstCharToUpperCase).join("");
+  };
+
+  const toKebabCase = (text) => text.trim().toLowerCase().replace(/\s+/g, "-");
+
+  const toCamelCase = (text) => {
+    let firstWord = "";
+
+    text = text.replace(/^\w+/, (word) => {
+      firstWord = word;
+      return "";
+    });
+
+    return text ? [firstWord, toPascalCase(text.trim())].join("") : firstWord;
+  };
 
   const formattedText = await AwaitAll.promises({
     actions: [toPascalCase, toKebabCase, toCamelCase],
@@ -62,7 +116,7 @@ __Table of Contents__
 ```js
 (async () => {
   const ages = [17, 18, 21];
-  
+
   const isAtLeast18 = (age) => {
     if (age >= 18) return age;
   };
@@ -71,7 +125,7 @@ __Table of Contents__
     action: isAtLeast18,
     inputs: ages,
     outputType: "multiple",
-    filter: true
+    filterOutput: true
   });
 
   console.log(agesAtLeast18);
@@ -79,6 +133,8 @@ __Table of Contents__
 ```
 
 ## Find
+
+We are going to look at how you can find a single value that matches particular conditions in an array. We are going to find a user with a particular ID in an array of users.
 
 ```js
 (async () => {
@@ -96,11 +152,11 @@ __Table of Contents__
       name: "Third User"
     }
   ];
-  
+
   const getUser = (id) => {
-    const getMatchedUser = (id) => {
+    const getMatchedUser = (user) => {
       if (id === user.id) return user;
-    }
+    };
 
     await AwaitAll.promises({
       action: getMatchedUser,
@@ -116,10 +172,12 @@ __Table of Contents__
 
 ## Map
 
+We are going to convert an array of numbers to another array containing numbers that are double the corresponding numbers in the original array.
+
 ```js
 (async () => {
   const numbers = [1, 2, 3];
-  
+
   const doubleNumber = (number) => {
     return number * 2;
   };
@@ -136,59 +194,65 @@ __Table of Contents__
 
 ## Search
 
+We are going to find a post that match a particular search string in an array of posts.
+
 ```js
 (async () => {
   const posts = [
     {
       id: 1,
-      title: "First Post"
+      author: 1,
+      title: "First Post",
       description: "The first post ever created.",
       tags: ["post", "first"]
     },
     {
       id: 2,
-      title: "Second Post"
+      author: 1,
+      title: "Second Post",
       description: "The second post.",
       tags: ["post", "second"]
     },
     {
       id: 3,
-      title: "Third Post"
+      author: 2,
+      title: "Third Post",
       description: "The third post.",
       tags: ["post", "third"]
     }
   ];
-  
+
   const searchPosts = async (text) => {
-    const words = text.split(/\s*/);
+    const words = text.split(/\s+/g);
 
     const getMatchedPost = async (post) => {
       const searchWord = (word) => {
-        let matchedEntities = [];
+        const wordRegex = new RegExp(word, "gi");
+        let matchedProperties = [];
 
-        if (post.title.search(word)) matchedEntities.push["title"];
-        if (post.description.search(word)) matchedEntities.push["description"];
-        if (post.tags.includes(word)) matchedEntities.push["tags"];
+        if (post.title.search(wordRegex) !== -1) matchedProperties.push("title");
+        if (post.description.search(wordRegex) !== -1) matchedProperties.push("description");
+        if (post.tags.includes(word)) matchedProperties.push("tags");
 
-        if (matchedEntities.length > 0) return matchedEntities;
-      }
+        if (matchedProperties.length > 0) return matchedProperties;
+      };
 
       const matches = await AwaitAll.promises({
         action: searchWord,
         inputs: words,
         outputType: "multiple",
-        filter: true
+        filterOutput: true
       });
 
-      const matchedEntities = matches.flat();
-      if (matchedEntities.length > 0) return { id: post.id, matchedEntities };
-    }
+      const matchedProperties = matches.flat();
+      if (matchedProperties.length > 0) return {post, matchedProperties};
+    };
 
     return AwaitAll.promises({
       action: getMatchedPost,
-      inputs: users,
+      inputs: posts,
       outputType: "multiple",
-      filter: true
+      filterOutput: true
     });
   };
 
