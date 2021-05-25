@@ -39,7 +39,7 @@ or
 
 ## Run
 
-Let us run a few processes at once. We will use the function `promises`, the only export of AwaitAll. The function takes, only one parameter, an object containing options which specify functions, inputs, the expected output and more.
+Running multiple processes at once with no inputs and no outputs.
 
 ```js
 (async () => {
@@ -54,9 +54,11 @@ Let us run a few processes at once. We will use the function `promises`, the onl
 })();
 ```
 
+Functions `processes1`, `processes2` and `processes3` are invoked at once using `AwaitAll.promises`. The property `actions` of parameter to `AwaitAll.promises` specifies the processes that are run at once. The property `outputType` indicates the type of output expected. The default value of `outputType` is `"none"`. So, leaving it out would be okay in this case.
+
 ## Reduce
 
-Let us look at how you can reduce an array of inputs into a single value. We are going to add multiple numbers at once.
+Finding the sum of numbers in an array.
 
 ```js
 (async () => {
@@ -74,9 +76,11 @@ Let us look at how you can reduce an array of inputs into a single value. We are
 })();
 ```
 
+The function `add` adds a number in the array `numbers` to the accumulated sum of previously added numbers. `AwaitAll.promises` is used to add the numbers. The property `action` specifies the function that is invoked multiple times at once. The property `inputs` specifies the inputs for the provided function. The property `outputType` indicates the type of output expected. Because the `sum` is not returned by `add`, the `outputType` is set to `"none"`.
+
 ## Reuse
 
-Let us see how we can use a single input to run multiple unique processes. We are going to format a string in Pascal case, Kebab case and Camel case.
+Converting text into different case styles.
 
 ```js
 (async () => {
@@ -87,8 +91,6 @@ Let us see how we can use a single input to run multiple unique processes. We ar
     const words = text.trim().toLowerCase().split(/\s+/g);
     return words.map(firstCharToUpperCase).join("");
   };
-
-  const toKebabCase = (text) => text.trim().toLowerCase().replace(/\s+/g, "-");
 
   const toCamelCase = (text) => {
     let firstWord = "";
@@ -101,6 +103,8 @@ Let us see how we can use a single input to run multiple unique processes. We ar
     return text ? [firstWord, toPascalCase(text.trim())].join("") : firstWord;
   };
 
+  const toKebabCase = (text) => text.trim().toLowerCase().replace(/\s+/g, "-");
+
   const formattedText = await AwaitAll.promises({
     actions: [toPascalCase, toKebabCase, toCamelCase],
     input: text,
@@ -111,7 +115,11 @@ Let us see how we can use a single input to run multiple unique processes. We ar
 })();
 ```
 
+The function `toPascalCase` converts the `text` to Pascal case. The function `toCamelCase` converts the `text` to Camel case. The function `toKebabCase`converts `text` to Kebab case.
+
 ## Filter
+
+Filtering ages that are at least 18 from an array.
 
 ```js
 (async () => {
@@ -132,9 +140,11 @@ Let us see how we can use a single input to run multiple unique processes. We ar
 })();
 ```
 
+The function `isAtLeast18` checks if a given age is at least 18. It returns the age if it is 18 or greater. The property `filterOutput` indicates that only values that are not `undefined` should be returned from the outputs of `isAtLeast18`.
+
 ## Find
 
-We are going to look at how you can find a single value that matches particular conditions in an array. We are going to find a user with a particular ID in an array of users.
+Finding a user by ID in an array of user objects.
 
 ```js
 (async () => {
@@ -153,16 +163,18 @@ We are going to look at how you can find a single value that matches particular 
     }
   ];
 
-  const getUser = (id) => {
+  const getUser = async (id) => {
     const getMatchedUser = (user) => {
       if (id === user.id) return user;
     };
 
-    await AwaitAll.promises({
+    const matchedUser = await AwaitAll.promises({
       action: getMatchedUser,
       inputs: users,
       outputType: "single"
     });
+
+    return matchedUser;
   };
 
   const user = await getUser(2);
@@ -170,9 +182,11 @@ We are going to look at how you can find a single value that matches particular 
 })();
 ```
 
+The function `getUser` returns a user that matches the provided `id`. The function `getMatchedUser` returns a user object if the property `id` matches. Because only one output is expected, `outputType` is set to `"single"`.
+
 ## Map
 
-We are going to convert an array of numbers to another array containing numbers that are double the corresponding numbers in the original array.
+Doubling every number in an array.
 
 ```js
 (async () => {
@@ -192,9 +206,11 @@ We are going to convert an array of numbers to another array containing numbers 
 })();
 ```
 
+The function `doubleNumber` doubles a given `number` and returns the result. Output is set to `"multiple"` because all the outputs are expected to be returned.
+
 ## Search
 
-We are going to find a post that match a particular search string in an array of posts.
+Search for posts that match a particular search text in an array of posts.
 
 ```js
 (async () => {
@@ -244,7 +260,7 @@ We are going to find a post that match a particular search string in an array of
         filterOutput: true
       });
 
-      const matchedProperties = matches.flat();
+      const matchedProperties = Array.from(new Set(matches.flat()));
       if (matchedProperties.length > 0) return {post, matchedProperties};
     };
 
@@ -261,3 +277,5 @@ We are going to find a post that match a particular search string in an array of
   console.log(matchedPosts);
 })();
 ```
+
+The function `searchPosts` returns all matching posts. The function `getMatchedPosts` returns an object containing a post and matched properties if a post matches the search text. The matched properties can be used to rank the posts or highlight the matched parts in a user interface. The function `searchWord` finds a matching post for a given word of the search text.
