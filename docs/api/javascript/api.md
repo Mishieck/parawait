@@ -1,15 +1,16 @@
 # API
 
-__Table of Contents__
+**Table of Contents**
 
-- [Introduction](#introduction)
-- [`promises`](#promises)
-  - [Syntax](#syntax)
-  - [Parameters](#parameters)
-  - [Return Value](#return-value)
-  - [Promises Options](#promises-options)
-    - [Structure](#structure)
-    - [Properties](#properties)
+- [API](#api)
+  - [Introduction](#introduction)
+  - [`promises`](#promises)
+    - [Syntax](#syntax)
+    - [Parameters](#parameters)
+    - [Return Value](#return-value)
+    - [Promises Options](#promises-options)
+      - [Structure](#structure)
+      - [Properties](#properties)
 
 ## Introduction
 
@@ -20,7 +21,7 @@ This is the API documentation recommended for JavaScript developers who are not 
 ### Syntax
 
 ```js
-promises(options)
+promises(options);
 ```
 
 ### Parameters
@@ -95,3 +96,5 @@ Specifies what type of output should be returned. It can be any of the following
 - `none`: This means that no output is expected.
 - `single`: This means that only a single output should be returned.
 - `multiple`: This means that multiple outputs should be returned.
+
+The default value is `"none"`

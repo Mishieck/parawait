@@ -25,7 +25,7 @@ A property of [PromisesOptions](#promisesoptions) that specifies the number of t
 ### Structure
 
 ```ts
-number
+number;
 ```
 
 ## ActionIndex
@@ -37,7 +37,7 @@ The position of an [`Action`](#action) in the promise schedule. If multiple [`Ac
 ### Structure
 
 ```ts
-any
+any;
 ```
 
 ## Actions
@@ -61,7 +61,7 @@ Indicates whether or not the expected [`Outputs`](#outputs) should be filtered. 
 ### Structure
 
 ```ts
-Boolean
+Boolean;
 ```
 
 ## Input
@@ -73,7 +73,7 @@ An input of user-defined functions.
 ### Structure
 
 ```ts
-any
+any;
 ```
 
 ## Inputs
@@ -97,7 +97,7 @@ Specifies what should be done in case any of the functions provided throws an er
 ### Structure
 
 ```ts
-"throw" | "return" | "continue" | "break"
+"throw" | "return" | "continue" | "break";
 ```
 
 Refer to [On Error](../onerror.md) for more information.
@@ -111,7 +111,7 @@ Output of user defined functions.
 ### Structure
 
 ```ts
-any
+any;
 ```
 
 ## Outputs
@@ -135,7 +135,7 @@ Used to specify the type of output expected.
 ### Structure
 
 ```ts
-"none" | "single" | "multiple"
+"none" | "single" | "multiple";
 ```
 
 ## Promises
@@ -147,7 +147,7 @@ Used to run multiple processes at once. It can be used to either run a single pr
 ### Structure
 
 ```ts
-(options: PromisesOptions) => PromisesOutput
+(options: PromisesOptions) => PromisesOutput;
 ```
 
 ## PromisesOptions
@@ -160,15 +160,15 @@ Input for [`promises`](#promises).
 
 ```ts
 type PromisesOptions = {
-  action?: Action,
-  actionCount?: ActionCount,
-  actions?: Actions,
-  filterOutput?: FilterOutput,
-  input?: Input,
-  inputs?: Inputs,
-  onerror?: Onerror,
-  outputType?: OutputType
-}
+  action?: Action;
+  actionCount?: ActionCount;
+  actions?: Actions;
+  filterOutput?: FilterOutput;
+  input?: Input;
+  inputs?: Inputs;
+  onerror?: Onerror;
+  outputType?: OutputType;
+};
 ```
 
 ### Properties
@@ -180,4 +180,4 @@ type PromisesOptions = {
 - `input`: A single input that is used as an argument every time a function is called.
 - `inputs`: Multiple inputs that are used as arguments to the provided function(s).
 - `onerror`: Used to indicate what should happen is an error occurs.
-- `outputType`: Specifies what type of output should be returned.
+- `outputType`: Specifies what type of output should be returned. The default value is `"none"`
