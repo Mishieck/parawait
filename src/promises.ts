@@ -40,7 +40,7 @@ type OutputSetters = {
 type OutputInitializer = (outputType: OutputType, outputCount: number) => Output | Outputs;
 
 const promises: Promises = async (options) => {
-  let {input, inputs, action, actions, actionCount, outputType = "none", filterOutput, onerror} = options;
+  let {input, inputs, action, actions, actionCount, outputType = "none", filterOutput, onerror = "throw"} = options;
 
   if (!actionCount) {
     actionCount = actions ? actions.length : inputs ? inputs.length : undefined;
@@ -48,7 +48,7 @@ const promises: Promises = async (options) => {
 
   if (!actionCount) throw new Error(`Parameter missing required property "actionCount".`);
 
-  let output: Output | Outputs = initializeOutput(outputType, actionCount || (inputs && inputs.length));
+  let output: Output | Outputs = initializeOutput(outputType, actionCount);
   const actionType: ActionType = action ? "single" : "multiple";
 
   const inputType: InputType = input ? "single" : inputs ? "multiple" : "none";
@@ -56,7 +56,7 @@ const promises: Promises = async (options) => {
   const getAction: ActionGetter = createActionGetters(action, actions)[actionType];
   const getInput: InputGetter = createInputGetters(input, inputs)[inputType];
   const outputFilter = (output: Output): boolean => output !== undefined;
-  const getOutput: OutputGetter = () => (filterOutput ? output.filter(outputFilter) : output);
+  const getOutput: OutputGetter = () => (filterOutput ? (output as Outputs).filter(outputFilter) : output);
 
   const outputSetters: OutputSetters = {
     none: () => undefined,
@@ -64,7 +64,7 @@ const promises: Promises = async (options) => {
       if (actionOutput !== undefined) output = actionOutput;
     },
     multiple: (actionOutput, index) => {
-      output[index] = actionOutput;
+      (output as Outputs)[index] = actionOutput;
     }
   };
 
@@ -84,18 +84,18 @@ const initializeOutput: OutputInitializer = (outputType, outputCount) => {
   return outputType === "multiple" ? new Array(outputCount) : undefined;
 };
 
-const createActionGetters = (action: Action, actions: Actions): ActionGetters => {
+const createActionGetters = (action?: Action, actions?: Actions): ActionGetters => {
   return {
-    single: () => action,
-    multiple: (index) => actions[index]
+    single: () => action as Action,
+    multiple: (index) => (actions as Actions)[index]
   };
 };
 
-const createInputGetters = (input: Input, inputs: Inputs): InputGetters => {
+const createInputGetters = (input?: Input, inputs?: Inputs): InputGetters => {
   return {
     none: () => undefined,
     single: () => input,
-    multiple: (index: number) => inputs[index]
+    multiple: (index: number) => (inputs as Inputs)[index]
   };
 };
 
