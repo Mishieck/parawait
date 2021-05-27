@@ -40,7 +40,7 @@ type OutputSetters = {
 type OutputInitializer = (outputType: OutputType, outputCount: number) => Output | Outputs;
 
 const promises: Promises = async (options) => {
-  let {input, inputs, action, actions, actionCount, outputType = "none", filterOutput, onerror = "throw"} = options;
+  let { input, inputs, action, actions, actionCount, outputType = "none", filterOutput, onerror = "throw" } = options;
 
   if (!actionCount) {
     actionCount = actions ? actions.length : inputs ? inputs.length : undefined;

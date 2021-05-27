@@ -1,4 +1,4 @@
-import {Action, Input, Onerror, Output, PromisesOutput} from "./types.js";
+import { Action, Input, Onerror, Output, PromisesOutput } from "./types.js";
 
 type PerformActionInput = {
   getAction: Function;
@@ -13,7 +13,7 @@ type PerformActions = (options: PerformActionInput) => PromisesOutput;
 type Promisify = (action: Action, input: Input, actionIndex: number) => PromisesOutput;
 
 const performActions: PerformActions = (options) => {
-  const {getAction, actionCount, getInput, setOutput, getOutput, onerror = "throw"} = options;
+  const { getAction, actionCount, getInput, setOutput, getOutput, onerror = "throw" } = options;
 
   return new Promise((resolve: Function, reject: Function) => {
     let resolveCount: number = actionCount;
