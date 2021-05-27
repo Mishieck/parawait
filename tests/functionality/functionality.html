@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Functionality Tests</title>
-</head>
-<body>
-  <script src="./functionality.js" type="module"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functionality Tests</title>
+  </head>
+  <body>
+    <script src="./functionality.js" type="module"></script>
+
+    <script type="module">
+      import {promises} from "/js/main.js";
+
+      (async () => {
+        const posts = [
+          {
+            id: 1,
+            author: 1,
+            title: "First Post",
+            description: "The first post ever created.",
+            tags: ["post", "first"]
+          },
+          {
+            id: 2,
+            author: 1,
+            title: "Second Post",
+            description: "The second post.",
+            tags: ["post", "second"]
+          },
+          {
+            id: 3,
+            author: 2,
+            title: "Third Post",
+            description: "The third post.",
+            tags: ["post", "third"]
+          }
+        ];
+
+        const searchPosts = async (text) => {
+          const words = text.split(/\s+/g);
+
+          const getMatchedPost = async (post) => {
+            const searchWord = (word) => {
+              const wordRegex = new RegExp(word, "gi");
+              let matchedProperties = [];
+
+              if (post.title.search(wordRegex) !== -1) matchedProperties.push("title");
+              if (post.description.search(wordRegex) !== -1) matchedProperties.push("description");
+              if (post.tags.includes(word)) matchedProperties.push("tags");
+
+              if (matchedProperties.length > 0) return matchedProperties;
+            };
+
+            const matches = await promises({
+              action: searchWord,
+              inputs: words,
+              outputType: "multiple",
+              filterOutput: true
+            });
+
+            const matchedProperties = Array.from(new Set(matches.flat()));
+            if (matchedProperties.length > 0) return {post, matchedProperties};
+          };
+
+          return promises({
+            action: getMatchedPost,
+            inputs: posts,
+            outputType: "multiple",
+            filterOutput: true
+          });
+        };
+
+        const matchedPosts = await searchPosts("second");
+
+        console.log(matchedPosts);
+      })();
+    </script>
+  </body>
 </html>
