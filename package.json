@@ -9,6 +9,12 @@
     "lib-esm",
     "src"
   ],
+  "directories": {
+    "dist": "dist",
+    "lib": "lib",
+    "lib-esm": "lib-esm",
+    "src": "src"
+  },
   "scripts": {
     "clean": "shx rm -rf dist lib lib-esm",
     "transpile": "tsc && tsc -m es6 --outDir lib-esm",
@@ -34,7 +40,7 @@
     "await",
     "typescript"
   ],
-  "author": "Mishieck Mwale",
+  "author": "Mishieck Mwale <mishieckdev@gmail.com> (https://mishieck.github.io)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Mishieck/await-all/issues"
