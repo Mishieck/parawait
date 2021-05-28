@@ -14,9 +14,9 @@
     - [Run](#run)
     - [Reduce](#reduce)
     - [Reuse](#reuse)
-    - [Filter](#filter)
-    - [Find](#find)
     - [Map](#map)
+    - [Find](#find)
+    - [Filter](#filter)
     - [Search](#search)
 
 ## Introduction
@@ -46,13 +46,13 @@ or
 ### CDN
 
 ```js
-const {promises} = AwaitAll;
+const { promises } = AwaitAll;
 ```
 
 ### NPM
 
 ```js
-import {promises} from "await-all";
+import { promises } from "await-all";
 ```
 
 ## Usage
@@ -137,30 +137,29 @@ Converting text into different case styles.
 
 The function `toPascalCase` converts the `text` to Pascal case. The function `toCamelCase` converts the `text` to Camel case. The function `toKebabCase`converts `text` to Kebab case.
 
-### Filter
+### Map
 
-Filtering ages that are at least 18 from an array.
+Doubling every number in an array.
 
 ```js
 (async () => {
-  const ages = [17, 18, 21];
+  const numbers = [1, 2, 3];
 
-  const isAtLeast18 = (age) => {
-    if (age >= 18) return age;
+  const doubleNumber = (number) => {
+    return number * 2;
   };
 
-  const agesAtLeast18 = await promises({
-    action: isAtLeast18,
-    inputs: ages,
-    outputType: "multiple",
-    filterOutput: true
+  const doubledNumbers = await promises({
+    action: doubleNumber,
+    inputs: numbers,
+    outputType: "multiple"
   });
 
-  console.log(agesAtLeast18);
+  console.log(doubledNumbers);
 })();
 ```
 
-The function `isAtLeast18` checks if a given age is at least 18. It returns the age if it is 18 or greater. The property `filterOutput` indicates that only values that are not `undefined` should be returned from the outputs of `isAtLeast18`.
+The function `doubleNumber` doubles a given `number` and returns the result. Output is set to `"multiple"` because all the outputs are expected to be returned.
 
 ### Find
 
@@ -204,29 +203,53 @@ Finding a user by ID in an array of user objects.
 
 The function `getUser` returns a user that matches the provided `id`. The function `getMatchedUser` returns a user object if the property `id` matches. Because only one output is expected, `outputType` is set to `"single"`.
 
-### Map
+### Filter
 
-Doubling every number in an array.
+Filtering products that are below a given price from an array.
 
 ```js
 (async () => {
-  const numbers = [1, 2, 3];
+  const products = [
+    {
+      id: 1,
+      name: "T-shirt",
+      size: "lg",
+      price: 100
+    },
+    {
+      id: 2,
+      name: "Socks",
+      size: "md",
+      price: 40
+    },
+    {
+      id: 3,
+      name: "Cap",
+      size: "sm",
+      price: 65
+    }
+  ];
 
-  const doubleNumber = (number) => {
-    return number * 2;
+  const getProductsBelowPrice = async (price) => {
+    const getProductBelowPrice = (product) => {
+      if (product.price < price) return product;
+    };
+
+    return promises({
+      action: getProductBelowPrice,
+      inputs: products,
+      outputType: "multiple",
+      filterOutput: true,
+      onerror: "continue"
+    });
   };
 
-  const doubledNumbers = await promises({
-    action: doubleNumber,
-    inputs: numbers,
-    outputType: "multiple"
-  });
-
-  console.log(doubledNumbers);
+  const productsBelowPrice = await getProductsBelowPrice(50);
+  console.log(productsBelowPrice);
 })();
 ```
 
-The function `doubleNumber` doubles a given `number` and returns the result. Output is set to `"multiple"` because all the outputs are expected to be returned.
+The function `getProductsBelowPrice` checks if a given product is below a given price. It returns the product if it is below the price and `undefined` otherwise. The property `filterOutput` indicates that only values that are not `undefined` should be returned from the outputs of `getProductBelowPrice`. The property `onerror` specifies what should happen if any of the processes throws an error. Its value is set to `"continue"` which means that the error will be ignored and all results that will be successfully collected will be returned.
 
 ### Search
 
@@ -238,23 +261,32 @@ Search for posts that match a particular search text in an array of posts.
     {
       id: 1,
       author: 1,
-      title: "First Post",
-      description: "The first post ever created.",
-      tags: ["post", "first"]
+      title: "About AwaitAll",
+      description: `A JavaScript library for achieving concurrency and parallelism using promises.`,
+      tags: [
+        "acom",
+        "about",
+        "javascript",
+        "js",
+        "library",
+        "concurrency",
+        "parallelism",
+        "promises"
+      ]
     },
     {
       id: 2,
       author: 1,
-      title: "Second Post",
-      description: "The second post.",
-      tags: ["post", "second"]
+      title: "Acom and Concurrency",
+      description: `On processors with only one core, Acom runs processes concurrently.`,
+      tags: ["acom", "concurrent", "single-core"]
     },
     {
       id: 3,
       author: 2,
-      title: "Third Post",
-      description: "The third post.",
-      tags: ["post", "third"]
+      title: "Acom and Parallelism",
+      description: `Acom runs processes in parallel on multi-core processors.`,
+      tags: ["acom", "parallel", "multi-core"]
     }
   ];
 
@@ -292,7 +324,7 @@ Search for posts that match a particular search text in an array of posts.
     });
   };
 
-  const matchedPosts = await searchPosts("second");
+  const matchedPosts = await searchPosts("call multiple functions in parallel using js");
 
   console.log(matchedPosts);
 })();
