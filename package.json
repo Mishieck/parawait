@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "A JavaScript library for achieving concurrency and parallelism using promises.",
   "main": "dist/main.js",
+  "module": "lib-esm",
   "files": [
     "dist",
     "lib",
@@ -23,7 +24,8 @@
     "bundle": "NODE_ENV=production webpack",
     "build": "npm run clean && npm run transpile && npm run ext && npm run bundle",
     "test": "node --experimental-modules ./tests/functionality/functionality.js",
-    "test:installation:cjs": "node ./tests/installation/cjs/cjs.js"
+    "test:installation:cjs": "node ./tests/installation/cjs/cjs.js",
+    "test:installation:link": "sudo npm link"
   },
   "repository": {
     "type": "git",
