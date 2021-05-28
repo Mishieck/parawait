@@ -2,22 +2,21 @@
 
 **Table of Contents**
 
-- [Quick Start Guide](#quick-start-guide)
-  - [Introduction](#introduction)
-  - [Installation](#installation)
-    - [CDN](#cdn)
-    - [NPM](#npm)
-  - [Importing](#importing)
-    - [CDN](#cdn-1)
-    - [NPM](#npm-1)
-  - [Usage](#usage)
-    - [Run](#run)
-    - [Reduce](#reduce)
-    - [Reuse](#reuse)
-    - [Map](#map)
-    - [Find](#find)
-    - [Filter](#filter)
-    - [Search](#search)
+- [Introduction](#introduction)
+- [Installation](#installation)
+  - [CDN](#cdn)
+  - [NPM](#npm)
+- [Importing](#importing)
+  - [CDN](#cdn-1)
+  - [NPM](#npm-1)
+- [Usage](#usage)
+  - [Run](#run)
+  - [Reduce](#reduce)
+  - [Reuse](#reuse)
+  - [Map](#map)
+  - [Find](#find)
+  - [Filter](#filter)
+  - [Search](#search)
 
 ## Introduction
 

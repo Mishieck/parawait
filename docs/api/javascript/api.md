@@ -2,15 +2,14 @@
 
 **Table of Contents**
 
-- [API](#api)
-  - [Introduction](#introduction)
-  - [`promises`](#promises)
-    - [Syntax](#syntax)
-    - [Parameters](#parameters)
-    - [Return Value](#return-value)
-    - [Promises Options](#promises-options)
-      - [Structure](#structure)
-      - [Properties](#properties)
+- [Introduction](#introduction)
+- [`promises`](#promises)
+  - [Syntax](#syntax)
+  - [Parameters](#parameters)
+  - [Return Value](#return-value)
+  - [Promises Options](#promises-options)
+    - [Structure](#structure)
+    - [Properties](#properties)
 
 ## Introduction
 
