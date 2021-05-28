@@ -12,7 +12,8 @@ module.exports = {
     filename: "main.js",
     library: "AwaitAll",
     libraryTarget: "umd",
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    globalObject: "this"
   },
   resolve: {
     extensions: [".ts", ".js"]
