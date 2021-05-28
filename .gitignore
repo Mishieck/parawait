@@ -70,4 +70,10 @@ js/
 dev/
 
 # build files
+lib/
+
+# build files
+lib-esm/
+
+# build files
 dist/

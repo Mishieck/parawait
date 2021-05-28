@@ -5,8 +5,15 @@
     "sourceMap": true,
     "declaration": true,
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "es5",
     "outDir": "lib"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "files": [
+    "./src/main.ts", // Prevent prettier from making a single line
+    "./src/types.ts",
+    "./src/promises.ts",
+    "./src/perform-actions.ts"
+  ]
 }
