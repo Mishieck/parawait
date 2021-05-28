@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "link": "sudo npm link ../../../"
   },
   "keywords": [],
   "author": "",
