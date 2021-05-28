@@ -1,7 +1,7 @@
 {
   "name": "await-all",
   "version": "0.1.0",
-  "description": "",
+  "description": "A JavaScript library for achieving concurrency and parallelism using promises.",
   "main": "dist/main.js",
   "files": [
     "dist",
@@ -22,7 +22,18 @@
     "type": "git",
     "url": "git+https://github.com/Mishieck/await-all.git"
   },
-  "keywords": [],
+  "keywords": [
+    "javascript",
+    "library",
+    "parallelism",
+    "concurrency",
+    "parallel",
+    "concurrent",
+    "promises",
+    "async",
+    "await",
+    "typescript"
+  ],
   "author": "Mishieck Mwale",
   "license": "MIT",
   "bugs": {
