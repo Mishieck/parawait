@@ -21,7 +21,7 @@
 
 ## Introduction
 
-In this guide we are going to look at some examples of how to use We are going to use A CDN to for this guide.
+This an introductory guide to AwaitAll. We are going to look at how to install and use AwaitAll.
 
 ## Installation
 
