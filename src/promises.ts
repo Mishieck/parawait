@@ -1,4 +1,4 @@
-import performActions from "./perform-actions.js";
+import performActions from "./perform-actions";
 
 import {
   Action,

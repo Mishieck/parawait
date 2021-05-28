@@ -1,4 +1,4 @@
-import { Action, Input, Onerror, Output, PromisesOutput } from "./types.js";
+import { Action, Input, Onerror, Output, PromisesOutput } from "./types";
 
 type PerformActionInput = {
   getAction: Function;

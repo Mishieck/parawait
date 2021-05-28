@@ -1,3 +1,3 @@
-import promises from "./promises.js";
+import promises from "./promises";
 
 export { promises };
