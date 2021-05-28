@@ -10,71 +10,47 @@
     <script src="./functionality.js" type="module"></script>
 
     <script type="module">
-      import {promises} from "/js/main.js";
+          import {promises} from "/js/main.js";
 
-      (async () => {
-        const posts = [
-          {
-            id: 1,
-            author: 1,
-            title: "First Post",
-            description: "The first post ever created.",
-            tags: ["post", "first"]
-          },
-          {
-            id: 2,
-            author: 1,
-            title: "Second Post",
-            description: "The second post.",
-            tags: ["post", "second"]
-          },
-          {
-            id: 3,
-            author: 2,
-            title: "Third Post",
-            description: "The third post.",
-            tags: ["post", "third"]
-          }
-        ];
+          (async () => {
+      const products = [
+        {
+          id: 1,
+          name: "T-shirt",
+          size: "lg",
+          price: 100
+        },
+        {
+          id: 2,
+          name: "Socks",
+          size: "md",
+          price: 40
+        },
+        {
+          id: 3,
+          name: "Cap",
+          size: "sm",
+          price: 65
+        }
+      ];
 
-        const searchPosts = async (text) => {
-          const words = text.split(/\s+/g);
-
-          const getMatchedPost = async (post) => {
-            const searchWord = (word) => {
-              const wordRegex = new RegExp(word, "gi");
-              let matchedProperties = [];
-
-              if (post.title.search(wordRegex) !== -1) matchedProperties.push("title");
-              if (post.description.search(wordRegex) !== -1) matchedProperties.push("description");
-              if (post.tags.includes(word)) matchedProperties.push("tags");
-
-              if (matchedProperties.length > 0) return matchedProperties;
-            };
-
-            const matches = await promises({
-              action: searchWord,
-              inputs: words,
-              outputType: "multiple",
-              filterOutput: true
-            });
-
-            const matchedProperties = Array.from(new Set(matches.flat()));
-            if (matchedProperties.length > 0) return {post, matchedProperties};
-          };
-
-          return promises({
-            action: getMatchedPost,
-            inputs: posts,
-            outputType: "multiple",
-            filterOutput: true
-          });
+      const getProductsBelowPrice = async (price) => {
+        const getProductBelowPrice = (product) => {
+          if (product.price < price) return product;
         };
 
-        const matchedPosts = await searchPosts("second");
+        return promises({
+          action: getProductBelowPrice,
+          inputs: products,
+          outputType: "multiple",
+          filterOutput: true,
+      onerror: "continue"
+        });
+      };
 
-        console.log(matchedPosts);
-      })();
+      const productsBelowPrice = await getProductsBelowPrice(50);
+      console.log(productsBelowPrice);
+          })();
     </script>
   </body>
 </html>

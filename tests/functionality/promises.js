@@ -1,13 +1,12 @@
 import { input, inputs, action, actions } from "./utils.js";
-import { promises } from "/js/main.js";
-
+import { promises } from "/lib-esm/main.js";
 
 const test = async (input) => {
-	let start = performance.now();
-	const output = await promises(input);
-	const time = performance.now() - start;
-	start = performance.now();
-	console.log({ output, time });
+  let start = performance.now();
+  const output = await promises(input);
+  const time = performance.now() - start;
+  start = performance.now();
+  console.log({ output, time });
 };
 
 const actionCount = 10;
@@ -30,8 +29,7 @@ const singleAction = {
     singleOutput: () => test({ action, actionCount, inputs, outputType: "single" }),
     multipleOutputs: () => test({ action, actionCount, inputs, outputType: "multiple" })
   }
-}
-
+};
 
 const multipleActions = {
   noInput: {
@@ -49,7 +47,6 @@ const multipleActions = {
     singleOutput: () => test({ actions, inputs, outputType: "single" }),
     multipleOutputs: () => test({ actions, inputs, outputType: "multiple" })
   }
-}
-
+};
 
 export default { singleAction, multipleActions };

@@ -3,7 +3,7 @@ import promises from "./promises.js";
 // Tests for promises
 // singleAction
 // noInput
-// promises.singleAction.noInput.noOutput();
+promises.singleAction.noInput.noOutput();
 // promises.singleAction.noInput.singleOutput();
 // promises.singleAction.noInput.multipleOutputs();
 
