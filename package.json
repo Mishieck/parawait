@@ -1,6 +1,6 @@
 {
   "type": "commonjs",
-  "name": "await-all",
+  "name": "parawait",
   "version": "0.1.0",
   "description": "A JavaScript library for achieving concurrency and parallelism using promises.",
   "main": "dist/main.js",
