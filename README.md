@@ -2,11 +2,11 @@
 
 ## Introduction
 
-AwaitAll is a JavaScript library for achieving concurrency and parallelism using promises. With AwaitAll, You can achieve concurrency and parallelism without using workers. On single-core processors, the processes are run concurrently. On multi-core processors, the processes are run in parallel.
+AwaitAll is a JavaScript library for achieving concurrency and parallelism using promises. On single-core processors, the processes are run concurrently. On multi-core processors, the processes are run in parallel.
 
 ## Features
 
-JavaScript provides native ways of running multiple processes at once. These include `Promise.all`, `Promise.race`, `Promise.any` and `Promise.allSettled`. The similarity between AwaitAll and the aforementioned methods is that they all use promises. However, there are a few significant differences between these methods and AwaitAll in terms of how they run the processes. Let us look at the features of AwaitAll.
+JavaScript provides native ways of running multiple processes at once. These include `Promise.all`, `Promise.race`, `Promise.any` and `Promise.allSettled`. The similarity between AwaitAll and the aforementioned methods is that they all use promises. However, there are a few significant differences between these methods and AwaitAll in terms of how they differ in terms of how they run the processes. Let us look at the features of AwaitAll.
 
 ### Memory Efficiency
 
@@ -14,11 +14,7 @@ All of the JavaScript native methods take an array of promises as the parameter.
 
 ### Synchronous Functions
 
-The functions you want to run at once do not have to be synchronous. AwaitAll wraps all functions in promises on your behalf.
-
-### A Variety of Methods
-
-AwaitAll provides various options to suit different needs. You can use different options based on how many inputs you provide, how many outputs you expect and how many unique functions you want to invoke.
+The functions you want to run at once do not have to be asynchronous. AwaitAll wraps all functions in promises on your behalf.
 
 ### Error Handling
 
