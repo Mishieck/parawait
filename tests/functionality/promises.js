@@ -1,5 +1,5 @@
 import { input, inputs, action, actions } from "./utils.js";
-import { promises } from "/lib-esm/main.js";
+import { promises } from "/lib/esm/main.js";
 
 const test = async (input) => {
   let start = performance.now();

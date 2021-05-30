@@ -10,10 +10,10 @@
     <script src="./functionality.js" type="module"></script>
 
     <script type="module">
-          import {promises} from "/js/main.js";
+      import {promises} from "/lib/esm/main.js";
 
-          (async () => {
-      const products = [
+      (async () => {
+        const products = [
         {
           id: 1,
           name: "T-shirt",
@@ -32,9 +32,9 @@
           size: "sm",
           price: 65
         }
-      ];
+        ];
 
-      const getProductsBelowPrice = async (price) => {
+        const getProductsBelowPrice = async (price) => {
         const getProductBelowPrice = (product) => {
           if (product.price < price) return product;
         };
@@ -44,13 +44,13 @@
           inputs: products,
           outputType: "multiple",
           filterOutput: true,
-      onerror: "continue"
+          onerror: "continue"
         });
-      };
+        };
 
-      const productsBelowPrice = await getProductsBelowPrice(50);
-      console.log(productsBelowPrice);
-          })();
+        const productsBelowPrice = await getProductsBelowPrice(50);
+        console.log(productsBelowPrice);
+      })();
     </script>
   </body>
 </html>
