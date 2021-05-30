@@ -13,13 +13,13 @@
   ],
   "directories": {
     "dist": "dist",
-    "lib": "lib",
-    "lib-esm": "lib-esm",
+    "cjs": "lib/cjs/",
+    "esm": "lib/esm/",
     "src": "src"
   },
   "scripts": {
-    "clean": "shx rm -rf dist lib lib-esm",
-    "transpile": "tsc && tsc -m es6 --outDir lib-esm",
+    "clean": "shx rm -rf dist lib",
+    "transpile": "tsc && tsc -m es6 --outDir lib/esm/",
     "ext": "node ./scripts/add-js-extensions.js",
     "bundle": "NODE_ENV=production webpack",
     "build": "npm run clean && npm run transpile && npm run ext && npm run bundle",
