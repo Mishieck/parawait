@@ -20,38 +20,38 @@
 
 ## Introduction
 
-This an introductory guide to AwaitAll. We are going to look at how to install and use AwaitAll.
+This an introductory guide to Parawait. We are going to look at how to install and use Parawait.
 
 ## Installation
 
 ### CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/await-all"></script>
+<script src="https://cdn.jsdelivr.net/npm/parawait"></script>
 ```
 
 or
 
 ```html
-<script src="https://unpkg.com/await-all"></script>
+<script src="https://unpkg.com/parawait"></script>
 ```
 
 ### NPM
 
-`$ npm i --save await-all`
+`$ npm i --save parawait`
 
 ## Importing
 
 ### CDN
 
 ```js
-const { promises } = AwaitAll;
+const { all } = Parawait;
 ```
 
 ### NPM
 
 ```js
-import { promises } from "await-all";
+import { all } from "parawait";
 ```
 
 ## Usage
@@ -66,14 +66,14 @@ Running multiple processes at once with no inputs and no outputs.
   const process2 = () => console.info("Running process 2.");
   const process3 = () => console.info("Running process 3.");
 
-  await promises({
+  await all({
     actions: [process1, process2, process3],
     outputType: "none"
   });
 })();
 ```
 
-Functions `processes1`, `processes2` and `processes3` are invoked at once using `promises`. The property `actions` of parameter to `promises` specifies the processes that are run at once. The property `outputType` indicates the type of output expected. The default value of `outputType` is `"none"`. So, leaving it out would be okay in this case.
+Functions `processes1`, `processes2` and `processes3` are invoked at once using `all`. The property `actions` of parameter to `all` specifies the processes that are run at once. The property `outputType` indicates the type of output expected. The default value of `outputType` is `"none"`. So, leaving it out would be okay in this case.
 
 ### Reduce
 
@@ -85,7 +85,7 @@ Finding the sum of numbers in an array.
   let sum = 0;
   const add = (number) => (sum += number);
 
-  await promises({
+  await all({
     action: add,
     inputs: numbers,
     outputType: "none"
@@ -95,7 +95,7 @@ Finding the sum of numbers in an array.
 })();
 ```
 
-The function `add` adds a number in the array `numbers` to the accumulated sum of previously added numbers. `promises` is used to add the numbers. The property `action` specifies the function that is invoked multiple times at once. The property `inputs` specifies the inputs for the provided function. The property `outputType` indicates the type of output expected. Because the `sum` is not returned by `add`, the `outputType` is set to `"none"`.
+The function `add` adds a number in the array `numbers` to the accumulated sum of previously added numbers. `all` is used to add the numbers. The property `action` specifies the function that is invoked multiple times at once. The property `inputs` specifies the inputs for the provided function. The property `outputType` indicates the type of output expected. Because the `sum` is not returned by `add`, the `outputType` is set to `"none"`.
 
 ### Reuse
 
@@ -124,7 +124,7 @@ Converting text into different case styles.
 
   const toKebabCase = (text) => text.trim().toLowerCase().replace(/\s+/g, "-");
 
-  const formattedText = await promises({
+  const formattedText = await all({
     actions: [toPascalCase, toKebabCase, toCamelCase],
     input: text,
     outputType: "multiple"
@@ -148,7 +148,7 @@ Doubling every number in an array.
     return number * 2;
   };
 
-  const doubledNumbers = await promises({
+  const doubledNumbers = await all({
     action: doubleNumber,
     inputs: numbers,
     outputType: "multiple"
@@ -186,7 +186,7 @@ Finding a user by ID in an array of user objects.
       if (id === user.id) return user;
     };
 
-    const matchedUser = await promises({
+    const matchedUser = await all({
       action: getMatchedUser,
       inputs: users,
       outputType: "single"
@@ -234,7 +234,7 @@ Filtering products that are below a given price from an array.
       if (product.price < price) return product;
     };
 
-    return promises({
+    return all({
       action: getProductBelowPrice,
       inputs: products,
       outputType: "multiple",
@@ -260,8 +260,8 @@ Search for posts that match a particular search text in an array of posts.
     {
       id: 1,
       author: 1,
-      title: "About AwaitAll",
-      description: `A JavaScript library for achieving concurrency and parallelism using promises.`,
+      title: "About Parawait",
+      description: `A JavaScript library for achieving concurrency and parallelism using all.`,
       tags: [
         "acom",
         "about",
@@ -270,7 +270,7 @@ Search for posts that match a particular search text in an array of posts.
         "library",
         "concurrency",
         "parallelism",
-        "promises"
+        "all"
       ]
     },
     {
@@ -304,7 +304,7 @@ Search for posts that match a particular search text in an array of posts.
         if (matchedProperties.length > 0) return matchedProperties;
       };
 
-      const matches = await promises({
+      const matches = await all({
         action: searchWord,
         inputs: words,
         outputType: "multiple",
@@ -315,7 +315,7 @@ Search for posts that match a particular search text in an array of posts.
       if (matchedProperties.length > 0) return {post, matchedProperties};
     };
 
-    return promises({
+    return all({
       action: getMatchedPost,
       inputs: posts,
       outputType: "multiple",

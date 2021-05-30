@@ -3,11 +3,11 @@
 **Table of Contents**
 
 - [Introduction](#introduction)
-- [`promises`](#promises)
+- [`all`](#all)
   - [Syntax](#syntax)
   - [Parameters](#parameters)
   - [Return Value](#return-value)
-  - [Promises Options](#promises-options)
+  - [all Options](#all-options)
     - [Structure](#structure)
     - [Properties](#properties)
 
@@ -15,12 +15,12 @@
 
 This is the API documentation recommended for JavaScript developers who are not familiar with TypeScript.
 
-## `promises`
+## `all`
 
 ### Syntax
 
 ```js
-promises(options);
+all(options);
 ```
 
 ### Parameters
@@ -33,15 +33,15 @@ promises(options);
     - Provide inputs to the functions
     - Specify how the output should be returned.
     - Specify what should happen is an error is encountered.
-  - Reference: [Promises Options](#promises-options).
+  - Reference: [all Options](#all-options).
 
 ### Return Value
 
 A promise that resolves to a value as specified in `options`.
 
-### Promises Options
+### all Options
 
-The input to [`promises`](#promises).
+The input to [`all`](#all).
 
 #### Structure
 

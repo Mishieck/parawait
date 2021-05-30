@@ -2,7 +2,7 @@
 
 ## Introduction
 
-It is one of the properties of `options`, a parameter `promises`. It specifies what should happen if an error has been encountered while performing the provided actions. It is a string which can take four values, `break`, `continue`, `return` or `throw`. Let us look at what each one of these values means.
+It is one of the properties of `options`, a parameter `all`. It specifies what should happen if an error has been encountered while performing the provided actions. It is a string which can take four values, `break`, `continue`, `return` or `throw`. Let us look at what each one of these values means.
 
 ## `break`
 

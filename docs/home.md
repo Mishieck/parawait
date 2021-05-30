@@ -2,11 +2,11 @@
 
 ## Introduction
 
-AwaitAll is a JavaScript library for achieving concurrency and parallelism using promises.
+Parawait is a JavaScript library for achieving concurrency and parallelism using all.
 
 ## Quick Start
 
-For a quick introduction to AwaitAll, refer to the [Quick Start Guide](./quick-start.md).
+For a quick introduction to Parawait, refer to the [Quick Start Guide](./quick-start.md).
 
 ## Topics
 

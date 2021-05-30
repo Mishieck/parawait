@@ -20,7 +20,7 @@ User defined function.
 
 ### Description
 
-A property of [PromisesOptions](#promisesoptions) that specifies the number of times an [Action](#action) must be performed if only one action has been provided. If multiple [Inputs](#inputs) have been provided, it is not required. This is because the number of inputs should always be equal to the number of times an action is performed.
+A property of [allOptions](#alloptions) that specifies the number of times an [Action](#action) must be performed if only one action has been provided. If multiple [Inputs](#inputs) have been provided, it is not required. This is because the number of inputs should always be equal to the number of times an action is performed.
 
 ### Structure
 
@@ -138,7 +138,7 @@ Used to specify the type of output expected.
 "none" | "single" | "multiple"
 ```
 
-## Promises
+## all
 
 ### Description
 
@@ -147,19 +147,19 @@ Used to run multiple processes at once. It can be used to either run a single pr
 ### Structure
 
 ```ts
-(options: PromisesOptions) => PromisesOutput
+(options: allOptions) => allOutput
 ```
 
-## PromisesOptions
+## allOptions
 
 ### Description
 
-Input for [`promises`](#promises).
+Input for [`all`](#all).
 
 ### Structure
 
 ```ts
-type PromisesOptions = {
+type allOptions = {
   action?: Action;
   actionCount?: ActionCount;
   actions?: Actions;
