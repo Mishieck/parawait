@@ -7,7 +7,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "es5",
-    "outDir": "lib"
+    "outDir": "lib/cjs/"
   },
   "include": ["src"],
   "files": [
