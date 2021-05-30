@@ -12,9 +12,9 @@ type InputType = ActionType | "none";
 
 type FilterOutput = Boolean;
 type Output = unknown;
-type OutputGetter = (index: number) => Output | Outputs;
+type OutputGetter = () => Output | Outputs;
 type Outputs = Array<Output>;
-type OutputSetter = (output: Output | Outputs, index: ActionIndex) => void;
+type OutputSetter = (output: Output, index: ActionIndex) => void;
 type OutputType = InputType;
 
 type Onerror = "throw" | "return" | "continue" | "break";
@@ -35,6 +35,7 @@ type Promises = (options: PromisesOptions) => PromisesOutput;
 
 export {
   Action,
+  ActionCount,
   ActionGetter,
   Actions,
   ActionType,

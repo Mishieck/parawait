@@ -9,32 +9,24 @@ import {
   InputGetter,
   Inputs,
   InputType,
-  Onerror,
   Output,
   OutputGetter,
   Outputs,
   OutputSetter,
   OutputType,
-  Promises,
-  PromisesOptions,
-  PromisesOutput
+  Promises
 } from "./types.js";
 
 type ActionGetters = {
-  single: ActionGetter;
-  multiple: ActionGetter;
+  [actionType in ActionType]: ActionGetter;
 };
 
 type InputGetters = {
-  none: InputGetter;
-  single: InputGetter;
-  multiple: InputGetter;
+  [inputType in InputType]: InputGetter;
 };
 
 type OutputSetters = {
-  none: OutputSetter;
-  single: OutputSetter;
-  multiple: OutputSetter;
+  [outputType in OutputType]: OutputSetter;
 };
 
 type OutputInitializer = (outputType: OutputType, outputCount: number) => Output | Outputs;
