@@ -1,3 +1,3 @@
-const AwaitAll = require("../../../lib/main.js");
+const Parawait = require("../../../lib/cjs/main.js");
 
-console.info(AwaitAll);
+Parawait.all({ action: () => console.info("Passed"), actionCount: 1 });

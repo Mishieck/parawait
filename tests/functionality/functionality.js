@@ -1,34 +1,34 @@
-import promises from "./promises.js";
+import all from "./all.js";
 
-// Tests for promises
+// Tests for all
 // singleAction
 // noInput
-promises.singleAction.noInput.noOutput();
-// promises.singleAction.noInput.singleOutput();
-// promises.singleAction.noInput.multipleOutputs();
+all.singleAction.noInput.noOutput();
+// all.singleAction.noInput.singleOutput();
+// all.singleAction.noInput.multipleOutputs();
 
 // singleInput
-// promises.singleAction.singleInput.noOutput();
-// promises.singleAction.singleInput.singleOutput();
-// promises.singleAction.singleInput.multipleOutputs();
+// all.singleAction.singleInput.noOutput();
+// all.singleAction.singleInput.singleOutput();
+// all.singleAction.singleInput.multipleOutputs();
 
 // multipleInputs
-// promises.singleAction.multipleInputs.noOutput();
-// promises.singleAction.multipleInputs.singleOutput();
-// promises.singleAction.multipleInputs.multipleOutputs();
+// all.singleAction.multipleInputs.noOutput();
+// all.singleAction.multipleInputs.singleOutput();
+// all.singleAction.multipleInputs.multipleOutputs();
 
 // multipleActions
 // noInput
-// promises.multipleActions.noInput.noOutput();
-// promises.multipleActions.noInput.singleOutput();
-// promises.multipleActions.noInput.multipleOutputs();
+// all.multipleActions.noInput.noOutput();
+// all.multipleActions.noInput.singleOutput();
+// all.multipleActions.noInput.multipleOutputs();
 
 // singleInput
-// promises.multipleActions.singleInput.noOutput();
-// promises.multipleActions.singleInput.singleOutput();
-// promises.multipleActions.singleInput.multipleOutputs();
+// all.multipleActions.singleInput.noOutput();
+// all.multipleActions.singleInput.singleOutput();
+// all.multipleActions.singleInput.multipleOutputs();
 
 // multipleInputs
-// promises.multipleActions.multipleInputs.noOutput();
-// promises.multipleActions.multipleInputs.singleOutput();
-// promises.multipleActions.multipleInputs.multipleOutputs();
+// all.multipleActions.multipleInputs.noOutput();
+// all.multipleActions.multipleInputs.singleOutput();
+// all.multipleActions.multipleInputs.multipleOutputs();

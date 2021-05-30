@@ -1,9 +1,9 @@
 import { input, inputs, action, actions } from "./utils.js";
-import { promises } from "/lib/esm/main.js";
+import { all } from "/lib/esm/main.js";
 
 const test = async (input) => {
   let start = performance.now();
-  const output = await promises(input);
+  const output = await all(input);
   const time = performance.now() - start;
   start = performance.now();
   console.log({ output, time });

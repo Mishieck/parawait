@@ -10,47 +10,18 @@
     <script src="./functionality.js" type="module"></script>
 
     <script type="module">
-      import {promises} from "/lib/esm/main.js";
+          import {all} from "/lib/esm/main.js";
 
-      (async () => {
-        const products = [
-        {
-          id: 1,
-          name: "T-shirt",
-          size: "lg",
-          price: 100
-        },
-        {
-          id: 2,
-          name: "Socks",
-          size: "md",
-          price: 40
-        },
-        {
-          id: 3,
-          name: "Cap",
-          size: "sm",
-          price: 65
-        }
-        ];
+          (async () => {
+            const process1 = () => console.info("Running process 1.");
+      const process2 = () => console.info("Running process 2.");
+      const process3 = () => console.info("Running process 3.");
 
-        const getProductsBelowPrice = async (price) => {
-        const getProductBelowPrice = (product) => {
-          if (product.price < price) return product;
-        };
-
-        return promises({
-          action: getProductBelowPrice,
-          inputs: products,
-          outputType: "multiple",
-          filterOutput: true,
-          onerror: "continue"
-        });
-        };
-
-        const productsBelowPrice = await getProductsBelowPrice(50);
-        console.log(productsBelowPrice);
-      })();
+      await all({
+        actions: [process1, process2, process3],
+        outputType: "none"
+      });
+          })();
     </script>
   </body>
 </html>

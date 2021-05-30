@@ -1,6 +1,6 @@
-const AwaitAll = require("await-all");
+const Parawait = require("parawait/lib/cjs/main");
 
-AwaitAll.promises({
+Parawait.all({
   action: () => console.info("Passed"),
   actionCount: 1
 });
