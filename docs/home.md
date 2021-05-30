@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Parawait is a JavaScript library for achieving concurrency and parallelism using all.
+Parawait is a JavaScript library for achieving concurrency and parallelism using promises.
 
 ## Quick Start
 
