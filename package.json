@@ -2,7 +2,7 @@
   "type": "commonjs",
   "name": "parawait",
   "version": "0.1.0",
-  "description": "A JavaScript library for achieving concurrency and parallelism using promises.",
+  "description": "A JavaScript library for achieving concurrency and parallelism using all.",
   "main": "dist/main.js",
   "module": "lib/esm/",
   "files": [
@@ -23,13 +23,13 @@
     "ext": "node ./scripts/add-js-extensions.js",
     "bundle": "NODE_ENV=production webpack",
     "build": "npm run clean && npm run transpile && npm run ext && npm run bundle",
-    "test": "node --experimental-modules ./tests/functionality/functionality.js",
     "test:installation:cjs": "node ./tests/installation/cjs/cjs.js",
-    "test:installation:link": "sudo npm link"
+    "link": "sudo npm link",
+    "test:installation:npm": "node ./tests/installation/npm/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mishieck/await-all.git"
+    "url": "git+https://github.com/Mishieck/parawait.git"
   },
   "keywords": [
     "javascript",
@@ -38,7 +38,7 @@
     "concurrency",
     "parallel",
     "concurrent",
-    "promises",
+    "all",
     "async",
     "await",
     "typescript"
@@ -46,9 +46,9 @@
   "author": "Mishieck Mwale <mishieckmwale@gmail.com> (https://mishieck.github.io)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Mishieck/await-all/issues"
+    "url": "https://github.com/Mishieck/parawait/issues"
   },
-  "homepage": "https://github.com/Mishieck/await-all#readme",
+  "homepage": "https://github.com/Mishieck/parawait#readme",
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.2",

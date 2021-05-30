@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
-    library: "AwaitAll",
+    library: "Parawait",
     libraryTarget: "umd",
     umdNamedDefine: true,
     globalObject: "this"

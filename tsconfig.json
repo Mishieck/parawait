@@ -13,7 +13,7 @@
   "files": [
     "./src/main.ts", // Prevent prettier from making a single line
     "./src/types.ts",
-    "./src/promises.ts",
+    "./src/all.ts",
     "./src/perform-actions.ts"
   ]
 }
