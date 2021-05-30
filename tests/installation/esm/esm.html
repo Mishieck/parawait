@@ -8,9 +8,9 @@
   </head>
   <body>
     <script type="module">
-      import { promises } from "/lib-esm/main.js";
+      import { promises } from "/lib/esm/main.js";
 
-      console.info(promises);
+      promises({action: () => console.info("Passed"), actionCount: 1 });
     </script>
   </body>
 </html>
