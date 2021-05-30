@@ -2,19 +2,19 @@
 
 ## Introduction
 
-Parawait is a JavaScript library for achieving concurrency and parallelism using all. On single-core processors, the processes are run concurrently. On multi-core processors, the processes are run in parallel.
+Parawait is a JavaScript library for achieving concurrency and parallelism using promises. On single-core processors, the processes are run concurrently. On multi-core processors, the processes are run in parallel.
 
 ## Features
 
-JavaScript provides native ways of running multiple processes at once. These include `Promise.all`, `Promise.race`, `Promise.any` and `Promise.allSettled`. The similarity between Parawait and the aforementioned methods is that they all use all. However, there are a few significant differences between these methods and Parawait in terms of how they differ in terms of how they run the processes. Let us look at the features of Parawait.
+JavaScript provides native ways of running multiple processes at once. These include `Promise.all`, `Promise.race`, `Promise.any` and `Promise.allSettled`. The similarity between Parawait and the aforementioned methods is that they all use promises. However, there are a few significant differences between these methods and Parawait in terms of how they differ in terms of how they run the processes. Let us look at the features of Parawait.
 
 ### Memory Efficiency
 
-All of the JavaScript native methods take an array of all as the parameter. However, Parawait does not use an array of all. This makes it more memory efficient.
+All of the JavaScript native methods take an array ofpromises as the parameter. However, Parawait does not use an array ofpromises. This makes it more memory efficient.
 
 ### Synchronous Functions
 
-The functions you want to run at once do not have to be asynchronous. Parawait wraps all functions in all on your behalf.
+The functions you want to run at once do not have to be asynchronous. Parawait wraps all functions inpromises on your behalf.
 
 ### Error Handling
 
