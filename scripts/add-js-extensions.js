@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const DIR = path.join(__dirname, "../lib-esm");
+const DIR = path.join(__dirname, "../lib/esm");
 const IMPORT_REGEX =
   /import\s+?(?:(?:(?:[\$\w*\s{},]*)\s+from\s+?)|)(?:(?:["'`](.*?)["'`])|(?:["'`](.*?)["'`]))[\s]*?(?:;|$|)/g;
 
