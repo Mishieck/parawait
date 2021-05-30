@@ -52,6 +52,50 @@ User defined functions.
 Array<Action>
 ```
 
+## All
+
+### Description
+
+Used to run multiple processes at once. It can be used to either run a single process multiple times or run multiple unique processes at once.
+
+### Structure
+
+```ts
+(options: AllOptions) => AllOutput
+```
+
+## AllOptions
+
+### Description
+
+Input for [`all`](#all).
+
+### Structure
+
+```ts
+type AllOptions = {
+  action?: Action;
+  actionCount?: ActionCount;
+  actions?: Actions;
+  filterOutput?: FilterOutput;
+  input?: Input;
+  inputs?: Inputs;
+  onerror?: Onerror;
+  outputType?: OutputType;
+}
+```
+
+### Properties
+
+- `action`: A single function to be invoked multiple times.
+- `actionCount`: Used when only when a single function has been provided. If multiple inputs have been used, there is no need to include this property because the number of inputs always equals the number of times the provided function is supposed to be invoked.
+- `actions`: Multiple functions to be invoked at once.
+- `filterOutput`: Specifies whether or not to filter outputs. This is used when multiple outputs are expected.
+- `input`: A single input that is used as an argument every time a function is called.
+- `inputs`: Multiple inputs that are used as arguments to the provided function(s).
+- `onerror`: Used to indicate what should happen is an error occurs.
+- `outputType`: Specifies what type of output should be returned. The default value is `"none"`
+
 ## FilterOutput
 
 ### Description
@@ -137,47 +181,3 @@ Used to specify the type of output expected.
 ```ts
 "none" | "single" | "multiple"
 ```
-
-## All
-
-### Description
-
-Used to run multiple processes at once. It can be used to either run a single process multiple times or run multiple unique processes at once.
-
-### Structure
-
-```ts
-(options: AllOptions) => AllOutput
-```
-
-## AllOptions
-
-### Description
-
-Input for [`all`](#all).
-
-### Structure
-
-```ts
-type AllOptions = {
-  action?: Action;
-  actionCount?: ActionCount;
-  actions?: Actions;
-  filterOutput?: FilterOutput;
-  input?: Input;
-  inputs?: Inputs;
-  onerror?: Onerror;
-  outputType?: OutputType;
-}
-```
-
-### Properties
-
-- `action`: A single function to be invoked multiple times.
-- `actionCount`: Used when only when a single function has been provided. If multiple inputs have been used, there is no need to include this property because the number of inputs always equals the number of times the provided function is supposed to be invoked.
-- `actions`: Multiple functions to be invoked at once.
-- `filterOutput`: Specifies whether or not to filter outputs. This is used when multiple outputs are expected.
-- `input`: A single input that is used as an argument every time a function is called.
-- `inputs`: Multiple inputs that are used as arguments to the provided function(s).
-- `onerror`: Used to indicate what should happen is an error occurs.
-- `outputType`: Specifies what type of output should be returned. The default value is `"none"`
