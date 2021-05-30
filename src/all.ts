@@ -14,7 +14,7 @@ import {
   Outputs,
   OutputSetter,
   OutputType,
-  Promises
+  all
 } from "./types.js";
 
 type ActionGetters = {
@@ -31,7 +31,7 @@ type OutputSetters = {
 
 type OutputInitializer = (outputType: OutputType, outputCount: number) => Output | Outputs;
 
-const promises: Promises = async (options) => {
+const all: all = async (options) => {
   let { input, inputs, action, actions, actionCount, outputType = "none", filterOutput, onerror = "throw" } = options;
 
   if (!actionCount) {
@@ -91,4 +91,4 @@ const createInputGetters = (input?: Input, inputs?: Inputs): InputGetters => {
   };
 };
 
-export default promises;
+export default all;

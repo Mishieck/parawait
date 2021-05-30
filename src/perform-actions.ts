@@ -7,7 +7,7 @@ import {
   Onerror,
   OutputGetter,
   OutputSetter,
-  PromisesOutput
+  allOutput
 } from "./types";
 
 type PerformActionInput = {
@@ -19,8 +19,8 @@ type PerformActionInput = {
   onerror: Onerror;
 };
 
-type PerformActions = (options: PerformActionInput) => PromisesOutput;
-type Promisify = (action: Action, input: Input, actionIndex: number) => PromisesOutput;
+type PerformActions = (options: PerformActionInput) => allOutput;
+type Promisify = (action: Action, input: Input, actionIndex: number) => allOutput;
 
 type RejectionHandlers = {
   [onerror in Onerror]: RejectionHandler;

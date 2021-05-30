@@ -1,3 +1,3 @@
-import promises from "./promises";
+import all from "./all";
 
-export { promises };
+export { all };
