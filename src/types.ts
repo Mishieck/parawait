@@ -19,7 +19,7 @@ type OutputType = InputType;
 
 type Onerror = "throw" | "return" | "continue" | "break";
 
-type allOptions = {
+type AllOptions = {
   input?: Input;
   inputs?: Inputs;
   action?: Action;
@@ -30,8 +30,8 @@ type allOptions = {
   onerror?: Onerror;
 };
 
-type allOutput = Promise<Output | Outputs>;
-type all = (options: allOptions) => allOutput;
+type AllOutput = Promise<Output | Outputs>;
+type All = (options: AllOptions) => AllOutput;
 
 export {
   Action,
@@ -49,7 +49,7 @@ export {
   Outputs,
   OutputSetter,
   OutputType,
-  all,
-  allOptions,
-  allOutput
+  All,
+  AllOptions,
+  AllOutput
 };

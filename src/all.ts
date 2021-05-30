@@ -14,7 +14,7 @@ import {
   Outputs,
   OutputSetter,
   OutputType,
-  all
+  All
 } from "./types.js";
 
 type ActionGetters = {
@@ -31,7 +31,7 @@ type OutputSetters = {
 
 type OutputInitializer = (outputType: OutputType, outputCount: number) => Output | Outputs;
 
-const all: all = async (options) => {
+const all: All = async (options) => {
   let { input, inputs, action, actions, actionCount, outputType = "none", filterOutput, onerror = "throw" } = options;
 
   if (!actionCount) {
