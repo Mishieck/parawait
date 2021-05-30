@@ -3,7 +3,7 @@ import all from "./all.js";
 // Tests for all
 // singleAction
 // noInput
-all.singleAction.noInput.noOutput();
+// all.singleAction.noInput.noOutput();
 // all.singleAction.noInput.singleOutput();
 // all.singleAction.noInput.multipleOutputs();
 
