@@ -4,11 +4,11 @@
   "version": "0.1.0",
   "description": "A JavaScript library for achieving concurrency and parallelism using promises.",
   "main": "dist/main.js",
-  "module": "lib-esm",
+  "module": "lib/esm/",
   "files": [
     "dist",
-    "lib",
-    "lib-esm",
+    "lib/cjs/",
+    "lib/esm/",
     "src"
   ],
   "directories": {
