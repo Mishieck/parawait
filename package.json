@@ -38,7 +38,7 @@
     "concurrency",
     "parallel",
     "concurrent",
-    "all",
+    "promises",
     "async",
     "await",
     "typescript"
