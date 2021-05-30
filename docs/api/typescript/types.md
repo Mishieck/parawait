@@ -138,7 +138,7 @@ Used to specify the type of output expected.
 "none" | "single" | "multiple"
 ```
 
-## all
+## All
 
 ### Description
 
@@ -147,10 +147,10 @@ Used to run multiple processes at once. It can be used to either run a single pr
 ### Structure
 
 ```ts
-(options: allOptions) => allOutput
+(options: AllOptions) => AllOutput
 ```
 
-## allOptions
+## AllOptions
 
 ### Description
 
@@ -159,7 +159,7 @@ Input for [`all`](#all).
 ### Structure
 
 ```ts
-type allOptions = {
+type AllOptions = {
   action?: Action;
   actionCount?: ActionCount;
   actions?: Actions;

@@ -261,7 +261,7 @@ Search for posts that match a particular search text in an array of posts.
       id: 1,
       author: 1,
       title: "About Parawait",
-      description: `A JavaScript library for achieving concurrency and parallelism using all.`,
+      description: `A JavaScript library for achieving concurrency and parallelism usingpromises.`,
       tags: [
         "acom",
         "about",
