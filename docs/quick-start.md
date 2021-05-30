@@ -45,7 +45,7 @@ or
 ### CDN
 
 ```js
-const { all } = Parawait;
+const { all } = parawait;
 ```
 
 ### NPM
