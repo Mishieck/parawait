@@ -12,7 +12,7 @@ import {
   Output,
   OutputGetter,
   Outputs,
-  OutputSetter,
+  OutputSetters,
   OutputType,
   All
 } from "./types.js";
@@ -23,10 +23,6 @@ type ActionGetters = {
 
 type InputGetters = {
   [inputType in InputType]: InputGetter;
-};
-
-type OutputSetters = {
-  [outputType in OutputType]: OutputSetter;
 };
 
 type OutputInitializer = (outputType: OutputType, outputCount: number) => Output | Outputs;
