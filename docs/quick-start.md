@@ -261,9 +261,9 @@ Search for posts that match a particular search text in an array of posts.
       id: 1,
       author: 1,
       title: "About Parawait",
-      description: `A JavaScript library for achieving concurrency and parallelism usingpromises.`,
+      description: `A JavaScript library for achieving concurrency and parallelism using promises.`,
       tags: [
-        "acom",
+        "parawait",
         "about",
         "javascript",
         "js",
@@ -276,16 +276,16 @@ Search for posts that match a particular search text in an array of posts.
     {
       id: 2,
       author: 1,
-      title: "Acom and Concurrency",
-      description: `On processors with only one core, Acom runs processes concurrently.`,
-      tags: ["acom", "concurrent", "single-core"]
+      title: "Parawait and Concurrency",
+      description: `On processors with only one core, Parawait runs processes concurrently.`,
+      tags: ["parawait", "concurrent", "single-core"]
     },
     {
       id: 3,
       author: 2,
-      title: "Acom and Parallelism",
-      description: `Acom runs processes in parallel on multi-core processors.`,
-      tags: ["acom", "parallel", "multi-core"]
+      title: "Parawait and Parallelism",
+      description: `Parawait runs processes in parallel on multi-core processors.`,
+      tags: ["parawait", "parallel", "multi-core"]
     }
   ];
 
