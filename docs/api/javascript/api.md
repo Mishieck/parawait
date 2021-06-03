@@ -5,6 +5,7 @@
 - [API](#api)
   - [Introduction](#introduction)
   - [`all`](#all)
+    - [Description](#description)
     - [Syntax](#syntax)
     - [Parameters](#parameters)
     - [Return Value](#return-value)
@@ -12,6 +13,7 @@
       - [Structure](#structure)
       - [Properties](#properties)
   - [`chunk`](#chunk)
+    - [Description](#description-1)
     - [Syntax](#syntax-1)
     - [Parameters](#parameters-1)
     - [Return Value](#return-value-1)
@@ -24,6 +26,10 @@
 This is the API documentation recommended for JavaScript developers who are not familiar with TypeScript.
 
 ## `all`
+
+### Description
+
+Used to run multiple processes at once.
 
 ### Syntax
 
@@ -81,6 +87,10 @@ The input to [`all`](#all).
   - `multiple`: This means that multiple outputs should be returned.
 
 ## `chunk`
+
+### Description
+
+Used to perform a single action multiple times on multiple inputs in chunks. Actions in a chunk are performed at once. Chunks are consumed sequentially.
 
 ### Syntax
 
