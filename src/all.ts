@@ -1,4 +1,5 @@
 import performActions from "./perform-actions";
+import outputFilter from "./output-filter";
 
 import {
   Action,
@@ -43,7 +44,6 @@ const all: All = async (options) => {
 
   const getAction: ActionGetter = createActionGetters(action, actions)[actionType];
   const getInput: InputGetter = createInputGetters(input, inputs)[inputType];
-  const outputFilter = (output: Output): boolean => output !== undefined;
   const getOutput: OutputGetter = () => (filterOutput ? (output as Outputs).filter(outputFilter) : output);
 
   const outputSetters: OutputSetters = {

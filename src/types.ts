@@ -44,6 +44,7 @@ export {
   ActionGetter,
   Actions,
   ActionType,
+  FilterOutput,
   Input,
   InputGetter,
   Inputs,

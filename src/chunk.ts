@@ -1,4 +1,5 @@
 import performActions from "./perform-actions";
+import outputFilter from "./output-filter";
 
 import {
   OutputType,
@@ -9,6 +10,7 @@ import {
   Action,
   AllOutput,
   ActionGetter,
+  FilterOutput,
   InputGetter,
   OutputGetter,
   Output,
@@ -24,13 +26,16 @@ type ChunkInput = {
   action: Action;
   chunkSize: number;
   chunkAction?: (outputChunk: Outputs) => Promise<void>;
+  filterOutput?: FilterOutput;
   outputType?: OutputType;
   onerror?: Onerror;
 };
 
 type Chunk = (options: ChunkInput) => AllOutput;
 
-const chunk: Chunk = async ({ inputs, action, chunkSize, chunkAction, outputType = "none", onerror = "throw" }) => {
+const chunk: Chunk = async (options) => {
+  let { inputs, action, chunkSize, chunkAction, outputType = "none", filterOutput, onerror = "throw" } = options;
+
   if (!chunkSize) throw new Error(`Missing required property 'chunkSize'.`);
   const getAction: ActionGetter = () => action;
   const getInput: InputGetter = (index) => inputs[chunkPosition + index];
@@ -71,7 +76,7 @@ const chunk: Chunk = async ({ inputs, action, chunkSize, chunkAction, outputType
     chunkPosition += chunkSize;
   }
 
-  return output;
+  return filterOutput ? (output as Outputs).filter(outputFilter) : output;
 };
 
 export default chunk;
