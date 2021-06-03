@@ -96,6 +96,48 @@ type AllOptions = {
 - `onerror`: Used to indicate what should happen is an error occurs.
 - `outputType`: Specifies what type of output should be returned. The default value is `"none"`
 
+## Chunk
+
+### Description
+
+Used for running a single action multiple times using chunked inputs. This is meant to reduce the call stack as the functions are invoked. The processes are run in chunks with the specified size. Actions in each chunk are performed at once. Chunks are consumed sequentially.
+
+### Structure
+
+```ts
+(options: ChunkInput) => AllOutput
+```
+
+## ChunkInput
+
+### Description
+
+The input to [`Chunk`](#chunk).
+
+### Structure
+
+```ts
+{
+  action: Action;
+  chunkAction?: (outputChunk: Outputs) => Promise<void>;
+  chunkSize: number;
+  filterOutput: FilterOutput;
+  inputs: Inputs;
+  onerror?: Onerror;
+  outputType?: OutputType;
+}
+```
+
+#### Properties
+
+- `action`: The action to be performed multiple times.
+- `chunkAction`: The action to be performed on each chunk. If provided, the `outputType` is considered to be `"none"`.
+- `chunkSize`: The size of each chunk.
+- `filterOutput`: Specifies whether or not the output should be filtered if multiple outputs are expected.
+- `inputs`: The inputs that are supposed to be chunked.
+- `onerror`: Specifies what should happen if an error occurs.
+- `outputType`: Specifies the type of output expected.
+
 ## FilterOutput
 
 ### Description

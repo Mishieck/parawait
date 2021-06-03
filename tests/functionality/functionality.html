@@ -10,18 +10,10 @@
     <script src="./functionality.js" type="module"></script>
 
     <script type="module">
-          import {all} from "/lib/esm/main.js";
+      import {all} from "/lib/esm/main.js";
 
-          (async () => {
-            const process1 = () => console.info("Running process 1.");
-      const process2 = () => console.info("Running process 2.");
-      const process3 = () => console.info("Running process 3.");
-
-      await all({
-        actions: [process1, process2, process3],
-        outputType: "none"
-      });
-          })();
+      (async () => {
+      })();
     </script>
   </body>
 </html>
