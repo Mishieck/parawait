@@ -15,6 +15,11 @@ type Output = unknown;
 type OutputGetter = () => Output | Outputs;
 type Outputs = Array<Output>;
 type OutputSetter = (output: Output, index: ActionIndex) => void;
+
+type OutputSetters = {
+  [outputType in OutputType]: OutputSetter;
+};
+
 type OutputType = InputType;
 
 type Onerror = "throw" | "return" | "continue" | "break";
@@ -39,6 +44,7 @@ export {
   ActionGetter,
   Actions,
   ActionType,
+  FilterOutput,
   Input,
   InputGetter,
   Inputs,
@@ -48,6 +54,7 @@ export {
   OutputGetter,
   Outputs,
   OutputSetter,
+  OutputSetters,
   OutputType,
   All,
   AllOptions,

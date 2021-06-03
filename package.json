@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "name": "parawait",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A JavaScript library for achieving concurrency and parallelism using promises.",
   "main": "dist/main.js",
   "module": "lib/esm/",
