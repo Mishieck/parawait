@@ -24,13 +24,13 @@ type ChunkInput = {
   action: Action;
   chunkSize: number;
   chunkAction?: (outputChunk: Outputs) => Promise<void>;
-  outputType: OutputType;
-  onerror: Onerror;
+  outputType?: OutputType;
+  onerror?: Onerror;
 };
 
 type Chunk = (options: ChunkInput) => AllOutput;
 
-const chunk: Chunk = async ({ inputs, action, chunkSize, chunkAction, outputType = "none", onerror }) => {
+const chunk: Chunk = async ({ inputs, action, chunkSize, chunkAction, outputType = "none", onerror = "throw" }) => {
   if (!chunkSize) throw new Error(`Missing required property 'chunkSize'.`);
   const getAction: ActionGetter = () => action;
   const getInput: InputGetter = (index) => inputs[chunkPosition + index];
