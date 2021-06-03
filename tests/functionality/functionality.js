@@ -1,4 +1,5 @@
 import all from "./all.js";
+import chunk from "./chunk.js";
 
 // Tests for all
 // singleAction
@@ -32,3 +33,8 @@ import all from "./all.js";
 // all.multipleActions.multipleInputs.noOutput();
 // all.multipleActions.multipleInputs.singleOutput();
 // all.multipleActions.multipleInputs.multipleOutputs();
+
+// Tests for chunk
+// chunk.noOutput();
+// chunk.singleOutput();
+// chunk.multipleOutputs();
