@@ -13,5 +13,17 @@ Used to run multiple processes at once.
 ### Type
 
 ```ts
-all
+All
+```
+
+## `chunk`
+
+### Description
+
+Used to run a single action multiple times in chunks.
+
+### Type
+
+```ts
+Chunk
 ```
