@@ -10,15 +10,19 @@ JavaScript provides native ways of running multiple processes at once. These inc
 
 ### Memory Efficiency
 
-All of the JavaScript native methods take an array ofpromises as the parameter. However, Parawait does not use an array ofpromises. This makes it more memory efficient.
+All of the JavaScript native methods take an array of promises as the parameter. However, Parawait does not use an array of promises. This makes it more memory efficient.
 
 ### Synchronous Functions
 
-The functions you want to run at once do not have to be asynchronous. Parawait wraps all functions inpromises on your behalf.
+The functions you want to run at once do not have to be asynchronous. Parawait wraps all functions in promises on your behalf.
 
 ### Error Handling
 
 Parawait gives you the choice to choose how errors should be handled. You can choose whether or not the promise should be rejected. You can also choose whether or not the promised should resolve with an output.
+
+### Chunking
+
+Running so many processes at once uses a lot of memory. This might also stand in the way of other processes. Sometimes, this results into errors as there is a limit to the call stack. Parawait allows you to run processes in chunks.
 
 ## Quick Start
 
